@@ -20,7 +20,9 @@
  * SOFTWARE.
  */
 
+import org.jetbrains.dokka.base.DokkaBaseConfiguration
 import gay.floof.utils.gradle.configurePom
+import org.jetbrains.dokka.base.DokkaBase
 import java.util.Properties
 
 buildscript {
@@ -35,6 +37,7 @@ buildscript {
         classpath("com.diffplug.spotless:spotless-plugin-gradle:6.0.0")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.0")
         classpath("org.jetbrains.dokka:dokka-gradle-plugin:1.6.0")
+        classpath("org.jetbrains.dokka:dokka-base:1.6.0")
     }
 }
 
@@ -115,6 +118,10 @@ subprojects {
     // Setup Dokka tasks
     tasks.dokkaHtml.configure {
         outputDirectory.set(file("${rootProject.projectDir}/docs"))
+        pluginConfiguration<DokkaBase, DokkaBaseConfiguration> {
+            customStyleSheets = listOf(file("${project.rootProject.projectDir}/assets/dokka.css"))
+        }
+
         dokkaSourceSets {
             configureEach {
                 platform.set(org.jetbrains.dokka.Platform.jvm)
