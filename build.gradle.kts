@@ -71,12 +71,12 @@ subprojects {
 
     // Define plugins from root project
     apply(plugin = "kotlin")
+    apply(plugin = "org.jetbrains.dokka")
     apply(plugin = "com.diffplug.spotless")
 
     // Check if we aren't in the gradle plugin project
     if (this.name != "gradle-plugin") {
         apply(plugin = "maven-publish")
-        apply(plugin = "org.jetbrains.dokka")
     } else {
         apply(plugin = "java-gradle-plugin")
     }
@@ -112,21 +112,19 @@ subprojects {
         implementation(kotlin("stdlib", "1.5.31"))
     }
 
-    if (this.name != "gradle-plugin") {
-        // Setup Dokka tasks
-        tasks.dokkaHtml.configure {
-            outputDirectory.set(file("${rootProject.projectDir}/docs"))
-            dokkaSourceSets {
-                configureEach {
-                    platform.set(org.jetbrains.dokka.Platform.jvm)
-                    sourceLink {
-                        localDirectory.set(file("src/main/kotlin"))
-                        remoteUrl.set(uri("https://github.com/auguwu/common-utils/tree/master/${project.name}/src/main/kotlin").toURL())
-                        remoteLineSuffix.set("#L")
-                    }
-
-                    jdkVersion.set(16)
+    // Setup Dokka tasks
+    tasks.dokkaHtml.configure {
+        outputDirectory.set(file("${rootProject.projectDir}/docs"))
+        dokkaSourceSets {
+            configureEach {
+                platform.set(org.jetbrains.dokka.Platform.jvm)
+                sourceLink {
+                    localDirectory.set(file("src/main/kotlin"))
+                    remoteUrl.set(uri("https://github.com/auguwu/common-utils/tree/master/${project.name}/src/main/kotlin").toURL())
+                    remoteLineSuffix.set("#L")
                 }
+
+                jdkVersion.set(16)
             }
         }
     }
@@ -201,6 +199,10 @@ subprojects {
             }
         }
     }
+}
+
+tasks.dokkaHtmlMultiModule.configure {
+    outputDirectory.set(file("${project.projectDir}/docs"))
 }
 
 inline fun String.replaceFirstChar(transform: (Char) -> Char): String = if (isNotEmpty()) transform(this[0]).toString() + substring(1) else this
