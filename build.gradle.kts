@@ -118,10 +118,6 @@ subprojects {
     // Setup Dokka tasks
     tasks.dokkaHtml.configure {
         outputDirectory.set(file("${rootProject.projectDir}/docs"))
-        pluginConfiguration<DokkaBase, DokkaBaseConfiguration> {
-            customStyleSheets = listOf(file("${project.rootProject.projectDir}/assets/dokka.css"))
-        }
-
         dokkaSourceSets {
             configureEach {
                 platform.set(org.jetbrains.dokka.Platform.jvm)
