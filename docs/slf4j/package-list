@@ -1,0 +1,10 @@
+$dokka.format:html-v1
+$dokka.linkExtension:html
+$dokka.location:gay.floof.utils.slf4j////PointingToDeclaration/slf4j/gay.floof.utils.slf4j/index.html
+$dokka.location:gay.floof.utils.slf4j//logging/#/PointingToDeclaration/slf4j/gay.floof.utils.slf4j/logging.html
+$dokka.location:gay.floof.utils.slf4j//logging/#TypeParam(bounds=[kotlin.reflect.KClass[*]])/PointingToDeclaration/slf4j/gay.floof.utils.slf4j/logging.html
+$dokka.location:gay.floof.utils.slf4j/Slf4jDelegate///PointingToDeclaration/slf4j/gay.floof.utils.slf4j/-slf4j-delegate/index.html
+$dokka.location:gay.floof.utils.slf4j/Slf4jDelegate/Slf4jDelegate/#kotlin.reflect.KClass[*]/PointingToDeclaration/slf4j/gay.floof.utils.slf4j/-slf4j-delegate/-slf4j-delegate.html
+$dokka.location:gay.floof.utils.slf4j/Slf4jDelegate/getValue/#kotlin.Any#kotlin.reflect.KProperty[*]/PointingToDeclaration/slf4j/gay.floof.utils.slf4j/-slf4j-delegate/get-value.html
+gay.floof.utils.slf4j
+

@@ -46,4 +46,4 @@ fun <T: KClass<*>> logging(cls: T): Slf4jDelegate = Slf4jDelegate(cls)
  * Create a new [Slf4jDelegate] with [T] as the reified class.
  * @return The read-only property instance
  */
-inline fun <reified T: KClass<*>> logging(): Slf4jDelegate = logging(T::class)
+inline fun <reified T> logging(): Slf4jDelegate = logging(T::class)

@@ -42,6 +42,7 @@ buildscript {
 }
 
 plugins {
+    id("com.gradle.plugin-publish") version "0.16.0"
     id("com.diffplug.spotless") version "6.0.0"
     id("org.jetbrains.dokka") version "1.6.0"
     kotlin("jvm") version "1.6.0"
@@ -74,14 +75,14 @@ subprojects {
 
     // Define plugins from root project
     apply(plugin = "kotlin")
+    apply(plugin = "maven-publish")
     apply(plugin = "org.jetbrains.dokka")
     apply(plugin = "com.diffplug.spotless")
 
     // Check if we aren't in the gradle plugin project
-    if (this.name != "gradle-plugin") {
-        apply(plugin = "maven-publish")
-    } else {
+    if (this.name == "gradle-plugin") {
         apply(plugin = "java-gradle-plugin")
+        apply(plugin = "com.gradle.plugin-publish")
     }
 
     // Setup Spotless
@@ -142,9 +143,15 @@ subprojects {
     }
 
     if (this.name == "gradle-plugin") {
+        pluginBundle {
+            website = "https://commons.floof.gay"
+            vcsUrl = "https://github.com/auguwu/common-utils"
+            tags = listOf("utilities", "utils", "commons")
+        }
+
         gradlePlugin {
             plugins {
-                create("gradlePlugin") {
+                create("gay.floof.noelUtils") {
                     id = "gay.floof.gradle"
                     displayName = "Noel's Common Gradle Utilities"
                     description = "Common utilities Noel uses for his Gradle projects."
@@ -179,7 +186,7 @@ subprojects {
                 create<MavenPublication>("Commons${project.name.replaceFirstChar { it.toUpperCase() }}") {
                     from(components["kotlin"])
 
-                    groupId = "gay.floofy.commons"
+                    groupId = "gay.floof.commons"
                     artifactId = "commons-${project.name}"
                     version = project.version as String
 
