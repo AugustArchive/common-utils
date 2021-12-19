@@ -20,9 +20,7 @@
  * SOFTWARE.
  */
 
-import org.jetbrains.dokka.base.DokkaBaseConfiguration
 import gay.floof.utils.gradle.configurePom
-import org.jetbrains.dokka.base.DokkaBase
 import java.util.Properties
 
 buildscript {
@@ -42,16 +40,14 @@ buildscript {
 }
 
 plugins {
-    id("com.gradle.plugin-publish") version "0.16.0"
     id("com.diffplug.spotless") version "6.0.0"
     id("org.jetbrains.dokka") version "1.6.0"
-    kotlin("jvm") version "1.6.0"
-    `java-gradle-plugin`
+    kotlin("jvm") version "1.6.10"
     `maven-publish`
 }
 
 group = "gay.floof"
-version = "1.0.1"
+version = "1.1.0"
 
 repositories {
     mavenCentral()
@@ -78,12 +74,6 @@ subprojects {
     apply(plugin = "maven-publish")
     apply(plugin = "org.jetbrains.dokka")
     apply(plugin = "com.diffplug.spotless")
-
-    // Check if we aren't in the gradle plugin project
-    if (this.name == "gradle-plugin") {
-        apply(plugin = "java-gradle-plugin")
-        apply(plugin = "com.gradle.plugin-publish")
-    }
 
     // Setup Spotless
     spotless {
@@ -142,69 +132,50 @@ subprojects {
         )
     }
 
-    if (this.name == "gradle-plugin") {
-        pluginBundle {
-            website = "https://commons.floof.gay"
-            vcsUrl = "https://github.com/auguwu/common-utils"
-            tags = listOf("utilities", "utils", "commons")
-        }
+    // Setup publishing to post to maven.floofy.dev
+    val publishingProps = try {
+        Properties().apply { load(file("${rootProject.projectDir}/gradle/publishing.properties").reader()) }
+    } catch(e: Exception) {
+        Properties()
+    }
 
-        gradlePlugin {
-            plugins {
-                create("gay.floof.noelUtils") {
-                    id = "gay.floof.gradle"
-                    displayName = "Noel's Common Gradle Utilities"
-                    description = "Common utilities Noel uses for his Gradle projects."
-                    implementationClass = "gay.floof.gradle.utils.GradleUtilPlugin"
+    val sourcesJar by tasks.registering(Jar::class) {
+        archiveClassifier.set("sources")
+        from(sourceSets.main.get().allSource)
+    }
+
+    val dokkaJar by tasks.registering(Jar::class) {
+        group = JavaBasePlugin.DOCUMENTATION_GROUP
+        description = "Assemble Kotlin documentation with Dokka"
+
+        archiveClassifier.set("javadoc")
+        from(tasks.dokkaHtml)
+        dependsOn(tasks.dokkaHtml)
+    }
+
+    publishing {
+        publications {
+            create<MavenPublication>("Commons${project.name.replaceFirstChar { it.toUpperCase() }}") {
+                from(components["kotlin"])
+
+                groupId = "gay.floof.commons"
+                artifactId = "commons-${project.name}"
+                version = project.version as String
+
+                artifact(sourcesJar.get())
+                artifact(dokkaJar.get())
+
+                pom {
+                    configurePom(project.name)
                 }
             }
         }
-    } else {
-        // Setup publishing to post to maven.floofy.dev
-        val publishingProps = try {
-            Properties().apply { load(file("${rootProject.projectDir}/gradle/publishing.properties").reader()) }
-        } catch(e: Exception) {
-            Properties()
-        }
 
-        val sourcesJar by tasks.registering(Jar::class) {
-            archiveClassifier.set("sources")
-            from(sourceSets.main.get().allSource)
-        }
-
-        val dokkaJar by tasks.registering(Jar::class) {
-            group = JavaBasePlugin.DOCUMENTATION_GROUP
-            description = "Assemble Kotlin documentation with Dokka"
-
-            archiveClassifier.set("javadoc")
-            from(tasks.dokkaHtml)
-            dependsOn(tasks.dokkaHtml)
-        }
-
-        publishing {
-            publications {
-                create<MavenPublication>("Commons${project.name.replaceFirstChar { it.toUpperCase() }}") {
-                    from(components["kotlin"])
-
-                    groupId = "gay.floof.commons"
-                    artifactId = "commons-${project.name}"
-                    version = project.version as String
-
-                    artifact(sourcesJar.get())
-                    artifact(dokkaJar.get())
-
-                    pom {
-                        configurePom(project.name)
-                    }
-                }
-            }
-
-            repositories {
-                maven(url = "s3://maven.floofy.dev/repo/releases") {
-                    credentials(AwsCredentials::class.java) {
-                        accessKey = publishingProps.getProperty("s3.accessKey") ?: ""
-                        secretKey = publishingProps.getProperty("s3.secretKey") ?: ""
-                    }
+        repositories {
+            maven(url = "s3://maven.floofy.dev/repo/releases") {
+                credentials(AwsCredentials::class.java) {
+                    accessKey = publishingProps.getProperty("s3.accessKey") ?: ""
+                    secretKey = publishingProps.getProperty("s3.secretKey") ?: ""
                 }
             }
         }

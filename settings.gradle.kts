@@ -1,4 +1,4 @@
 rootProject.name = "commons"
 
-include(":gradle-plugin")
+include(":gradle-utils")
 include(":slf4j")

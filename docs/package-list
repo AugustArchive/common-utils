@@ -1,7 +1,7 @@
 $dokka.format:html-v1
 $dokka.linkExtension:html
 
-module:gradle-plugin
+module:gradle-utils
 gay.floof.gradle.utils
 module:slf4j
 gay.floof.utils.slf4j

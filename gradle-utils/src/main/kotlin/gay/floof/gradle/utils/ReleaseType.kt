@@ -20,20 +20,30 @@
  * SOFTWARE.
  */
 
-plugins {
-    `kotlin-dsl`
-    groovy
-}
+package gay.floof.gradle.utils
 
-repositories {
-    mavenCentral()
-    maven {
-        url = uri("https://plugins.gradle.org/m2/")
+/**
+ * Returns the release type of a specific [Version].
+ */
+enum class ReleaseType(val suffix: String) {
+    /**
+     * Represents a release candidate release, this is when this project
+     * is almost through completion of a new release.
+     */
+    ReleaseCandidate("rc"),
+
+    /**
+     * Represents a beta release, this might have some bugs to work out.
+     */
+    Beta("beta"),
+
+    /**
+     * Full release! The default release type for a [Version] object.
+     */
+    None("");
+
+    companion object {
+        fun fromOrNull(suffix: String): ReleaseType? = values().find { it.suffix == suffix }
+        fun from(suffix: String): ReleaseType = fromOrNull(suffix) ?: error("Unknown release type: $suffix")
     }
-}
-
-dependencies {
-    implementation(kotlin("gradle-plugin-api", version = "1.6.10"))
-    implementation(gradleApi())
-    implementation(localGroovy())
 }
