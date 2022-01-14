@@ -33,9 +33,9 @@ buildscript {
 
     dependencies {
         classpath("com.diffplug.spotless:spotless-plugin-gradle:6.1.2")
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.0")
-        classpath("org.jetbrains.dokka:dokka-gradle-plugin:1.6.0")
-        classpath("org.jetbrains.dokka:dokka-base:1.6.0")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.10")
+        classpath("org.jetbrains.dokka:dokka-gradle-plugin:1.6.10")
+        classpath("org.jetbrains.dokka:dokka-base:1.6.10")
         classpath("io.kotest:kotest-gradle-plugin:0.3.9")
     }
 }
@@ -65,6 +65,8 @@ tasks {
         delete(dokkaOutput)
     }
 }
+
+println("using Java v${JavaVersion.current()}, Kotlin v${KotlinVersion.CURRENT}")
 
 subprojects {
     // Define project metadata
@@ -146,6 +148,12 @@ subprojects {
         kotlinOptions.freeCompilerArgs += listOf(
             "-Xopt-in=kotlin.RequiresOptIn"
         )
+    }
+
+    // Gradle cannot add `-D...` for some reason?
+    val s3Endpoint: Any? = findProperty("org.gradle.s3.endpoint") ?: System.getenv("org.gradle.s3.endpoint")
+    if (s3Endpoint == null) {
+        System.setProperty("org.gradle.s3.endpoint", "https://s3.wasabisys.com")
     }
 
     // Setup publishing to post to maven.floofy.dev
