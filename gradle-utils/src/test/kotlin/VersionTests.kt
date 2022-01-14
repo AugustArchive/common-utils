@@ -20,35 +20,28 @@
  * SOFTWARE.
  */
 
-package gay.floof.gradle.utils
+package gay.floof.gradle.utils.tests
 
-/**
- * Represents a simple version class to use for versioning.
- * @param major The major version.
- * @param minor The minor version.
- * @param patch The patch version.
- * @param build The build version, this is only needed if the [ReleaseType] is not `None`.
- * @param release The release type to use for the finalized result. Defaults to [ReleaseType.None].
- */
-class Version(
-    private val major: Int,
-    private val minor: Int,
-    private val patch: Int,
-    private val build: Int = 0,
-    private val release: ReleaseType = ReleaseType.None
-) {
-    override fun toString(): String = buildString {
-        append("$major.$minor")
-        if (patch != 0) {
-            append(".$patch")
-        }
+import gay.floof.gradle.utils.*
+import org.junit.jupiter.api.Test
+import kotlin.test.assertEquals
 
-        if (release != ReleaseType.None) {
-            append("-${release.suffix}")
-        }
+object VersionTests {
+    @Test
+    fun `returns 2 dot 0 as the version number`() {
+        val version = Version(2, 0, 0)
+        assertEquals("$version", "2.0", "Version(2, 0, 0) != 2.0")
+    }
 
-        if (build != 0 && release != ReleaseType.None) {
-            append(".$build")
-        }
+    @Test
+    fun `returns 2 dot 0 dot 1 dash rc dot 2`() { // returns 2.0.1.-rc.2
+        val version = Version(2, 0, 1, 2, ReleaseType.ReleaseCandidate)
+        assertEquals("$version", "2.0.1-rc.2", "Version(2, 0, 1, 2, ReleaseType.ReleaseCandidate) != 2.0.1-rc.2")
+    }
+
+    @Test
+    fun `returns 2 dot 0 dash beta`() { // returns 2.0-beta
+        val version = Version(2, 0, 0, 0, ReleaseType.Beta)
+        assertEquals("$version", "2.0-beta", "Version(2, 0, 0, 0, ReleaseType.Beta) != 2.0-beta")
     }
 }

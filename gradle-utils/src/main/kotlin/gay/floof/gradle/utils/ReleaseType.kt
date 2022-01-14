@@ -1,5 +1,5 @@
-/**
- * Copyright (c) 2021 Noel <cutie@floofy.dev>
+/*
+ * Copyright (c) 2021-2022 Noel <cutie@floofy.dev>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,10 +20,11 @@
  * SOFTWARE.
  */
 
+@file:Suppress("UNUSED")
 package gay.floof.gradle.utils
 
 /**
- * Returns the release type of a specific [Version].
+ * Returns the release type of specific [Version].
  */
 enum class ReleaseType(val suffix: String) {
     /**

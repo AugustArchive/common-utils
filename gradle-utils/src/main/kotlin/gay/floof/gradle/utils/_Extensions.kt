@@ -1,5 +1,5 @@
-/**
- * Copyright (c) 2021 Noel <cutie@floofy.dev>
+/*
+ * Copyright (c) 2021-2022 Noel <cutie@floofy.dev>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,11 +21,13 @@
  */
 
 @file:JvmName("GradleExtensionsKt")
+@file:Suppress("UNUSED")
 package gay.floof.gradle.utils
 
 import org.gradle.api.artifacts.Dependency
 import org.gradle.api.artifacts.dsl.DependencyHandler
 import org.gradle.api.artifacts.dsl.RepositoryHandler
+import org.jetbrains.kotlin.gradle.plugin.KotlinDependencyHandler
 import java.net.URI
 
 /**
@@ -70,6 +72,49 @@ fun DependencyHandler.floof(group: String, module: String, version: String): Dep
  */
 fun DependencyHandler.nino(group: String, module: String, version: String): Dependency? =
     add("implementation", "sh.nino.$group:$module:$version")
+
+/**
+ * Adds a dependency from the `dev.floofy` package for MPP projects.
+ * Only modules that require this is:
+ *
+ * - [Haru](https://haru.floofy.dev)
+ *
+ * @param group The group to choose from.
+ * @param module The module name.
+ * @param version The version to use.
+ * @return The [Dependency] to use with the `dependencies {}` DSL block.
+ */
+fun KotlinDependencyHandler.floofy(group: String, module: String, version: String): Dependency? =
+    implementation("gay.floof.$group:$module:$version")
+
+/**
+ * Adds a dependency from the `gay.floof` package for MPP projects.
+ * Only modules that require this is:
+ *
+ * - [commons-slf4j](https://commons.floof.gay)
+ * - [Snow](https://snow.floof.dev)
+ *
+ * @param group The group to choose from.
+ * @param module The module name.
+ * @param version The version to use.
+ * @return The [Dependency] to use with the `dependencies {}` DSL block.
+ */
+fun KotlinDependencyHandler.floof(group: String, module: String, version: String): Dependency? =
+    implementation("gay.floof.$group:$module:$version")
+
+/**
+ * Adds a dependency from the `sh.nino` package for MPP projects.
+ * Only modules that require this is:
+ *
+ * - [Eri](https://eri.nino.sh)
+ *
+ * @param group The group to choose from.
+ * @param module The module name.
+ * @param version The version to use.
+ * @return The [Dependency] to use with the `dependencies {}` DSL block.
+ */
+fun KotlinDependencyHandler.nino(group: String, module: String, version: String): Dependency? =
+    implementation("gay.floof.$group:$module:$version")
 
 /**
  * Adds the Noel repository to this current [RepositoryHandler].

@@ -20,35 +20,24 @@
  * SOFTWARE.
  */
 
-package gay.floof.gradle.utils
+package gay.floof.utils.slf4j.tests
 
-/**
- * Represents a simple version class to use for versioning.
- * @param major The major version.
- * @param minor The minor version.
- * @param patch The patch version.
- * @param build The build version, this is only needed if the [ReleaseType] is not `None`.
- * @param release The release type to use for the finalized result. Defaults to [ReleaseType.None].
- */
-class Version(
-    private val major: Int,
-    private val minor: Int,
-    private val patch: Int,
-    private val build: Int = 0,
-    private val release: ReleaseType = ReleaseType.None
-) {
-    override fun toString(): String = buildString {
-        append("$major.$minor")
-        if (patch != 0) {
-            append(".$patch")
-        }
+import gay.floof.utils.slf4j.*
+import org.slf4j.LoggerFactory
+import kotlin.test.Test
+import kotlin.test.assertNotNull
+import kotlin.test.assertSame
 
-        if (release != ReleaseType.None) {
-            append("-${release.suffix}")
-        }
+private class TestClass {
+    val log by logging<TestClass>()
+}
 
-        if (build != 0 && release != ReleaseType.None) {
-            append(".$build")
-        }
+object Slf4jTests {
+    @Test
+    fun `returns a valid delegate`() {
+        val c = TestClass()
+
+        assertNotNull(c, "`log` should be Logger, not Logger?")
+        assertSame(c.log, LoggerFactory.getLogger(TestClass::class.java), "class comparison was not the same :<")
     }
 }

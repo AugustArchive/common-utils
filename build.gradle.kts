@@ -32,16 +32,18 @@ buildscript {
     }
 
     dependencies {
-        classpath("com.diffplug.spotless:spotless-plugin-gradle:6.0.0")
+        classpath("com.diffplug.spotless:spotless-plugin-gradle:6.1.2")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.0")
         classpath("org.jetbrains.dokka:dokka-gradle-plugin:1.6.0")
         classpath("org.jetbrains.dokka:dokka-base:1.6.0")
+        classpath("io.kotest:kotest-gradle-plugin:0.3.9")
     }
 }
 
 plugins {
-    id("com.diffplug.spotless") version "6.0.0"
-    id("org.jetbrains.dokka") version "1.6.0"
+    id("com.diffplug.spotless") version "6.1.2"
+    id("org.jetbrains.dokka") version "1.6.10"
+    id("io.kotest") version "0.3.9"
     kotlin("jvm") version "1.6.10"
     `maven-publish`
 }
@@ -71,6 +73,7 @@ subprojects {
 
     // Define plugins from root project
     apply(plugin = "kotlin")
+    apply(plugin = "java-library")
     apply(plugin = "maven-publish")
     apply(plugin = "org.jetbrains.dokka")
     apply(plugin = "com.diffplug.spotless")
@@ -103,7 +106,15 @@ subprojects {
     }
 
     dependencies {
-        implementation(kotlin("stdlib", "1.5.31"))
+        // Kotlin stdlib
+        implementation(kotlin("stdlib", "1.6.10"))
+
+        // Testing utilities
+        testImplementation(kotlin("test"))
+    }
+
+    tasks.test {
+        useJUnitPlatform()
     }
 
     // Setup Dokka tasks
@@ -118,14 +129,19 @@ subprojects {
                     remoteLineSuffix.set("#L")
                 }
 
-                jdkVersion.set(16)
+                jdkVersion.set(8)
             }
         }
     }
 
     // In order to use @OptIn, we need to add the compiler flag
     tasks.compileKotlin.configure {
-        kotlinOptions.jvmTarget = JavaVersion.VERSION_16.toString()
+        // Why 1.8 support?
+        //
+        // > Task :slf4j:compileTestKotlin FAILED
+        // e: D:\Projects\Libraries\Kotlin\commons\slf4j\src\test\kotlin\Slf4jTests.kt: (32, 16): Cannot inline bytecode built with JVM target 16 into bytecode that is being built with JVM target
+        // 1.8. Please specify proper '-jvm-target' option
+        kotlinOptions.jvmTarget = JavaVersion.VERSION_1_8.toString()
         kotlinOptions.javaParameters = true
         kotlinOptions.freeCompilerArgs += listOf(
             "-Xopt-in=kotlin.RequiresOptIn"
