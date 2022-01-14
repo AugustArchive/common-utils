@@ -33,5 +33,9 @@ jobs:
       - name: Run all tests
         run: ./gradlew test
 
+      - name: Apply secrets in gradle/publishing.properties
+        run: |
+          echo "${{ secrets.S3_PROPS }}" >> gradle/publishing.properties
+
       - name: Publish!
         run: ./gradlew publish -Dorg.gradle.s3.endpoint=https://s3.wasabisys.com
