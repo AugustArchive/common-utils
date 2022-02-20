@@ -49,12 +49,11 @@ plugins {
 }
 
 group = "gay.floof"
-version = "1.2.0"
+version = "1.3.0"
 
 repositories {
     mavenCentral()
     mavenLocal()
-    jcenter()
 }
 
 // Setup root project tasks
@@ -63,6 +62,11 @@ tasks {
 
     clean {
         delete(dokkaOutput)
+    }
+
+    dokkaHtmlMultiModule.configure {
+        dependsOn(clean)
+        outputDirectory.set(file(dokkaOutput))
     }
 }
 
@@ -179,7 +183,7 @@ subprojects {
 
     publishing {
         publications {
-            create<MavenPublication>("Commons${project.name.replaceFirstChar { it.toUpperCase() }}") {
+            create<MavenPublication>("commons") {
                 from(components["kotlin"])
 
                 groupId = "gay.floof.commons"
@@ -205,9 +209,3 @@ subprojects {
         }
     }
 }
-
-tasks.dokkaHtmlMultiModule.configure {
-    outputDirectory.set(file("${project.projectDir}/docs"))
-}
-
-inline fun String.replaceFirstChar(transform: (Char) -> Char): String = if (isNotEmpty()) transform(this[0]).toString() + substring(1) else this

@@ -34,6 +34,12 @@ enum class ReleaseType(val suffix: String) {
     ReleaseCandidate("rc"),
 
     /**
+     * Represents a snapshot release, that this is a pre-beta release and
+     * bugs will occur.
+     */
+    Snapshot("snapshot"),
+
+    /**
      * Represents a beta release, this might have some bugs to work out.
      */
     Beta("beta"),

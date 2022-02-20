@@ -20,7 +20,7 @@
  * SOFTWARE.
  */
 
-@file:JvmName("GradleExtensionsKt")
+@file:JvmName("NoelGradleExtensionsKt")
 @file:Suppress("UNUSED")
 package gay.floof.gradle.utils
 
@@ -74,6 +74,16 @@ fun DependencyHandler.nino(group: String, module: String, version: String): Depe
     add("implementation", "sh.nino.$group:$module:$version")
 
 /**
+ * Adds any dependencies from the `org.noelware` package for MPP projects.
+ * @param group The group to choose from.
+ * @param module The module name.
+ * @param version The version to use.
+ * @return The [Dependency] to use with the `dependencies {}` DSL block.
+ */
+fun DependencyHandler.noelware(group: String, module: String, version: String): Dependency? =
+    add("implementation", "org.noelware.$group:$module:$version")
+
+/**
  * Adds a dependency from the `dev.floofy` package for MPP projects.
  * Only modules that require this is:
  *
@@ -117,10 +127,29 @@ fun KotlinDependencyHandler.nino(group: String, module: String, version: String)
     implementation("gay.floof.$group:$module:$version")
 
 /**
+ * Adds any dependencies from the `org.noelware` package for MPP projects.
+ * @param group The group to choose from.
+ * @param module The module name.
+ * @param version The version to use.
+ * @return The [Dependency] to use with the `dependencies {}` DSL block.
+ */
+fun KotlinDependencyHandler.noelware(group: String, module: String, version: String): Dependency? =
+    implementation("org.noelware.$group:$module:$version")
+
+/**
  * Adds the Noel repository to this current [RepositoryHandler].
  */
 fun RepositoryHandler.noel() {
     maven {
         url = URI.create("https://maven.floofy.dev/repo/releases")
+    }
+}
+
+/**
+ * Adds the Noelware repository to this current [RepositoryHandler].
+ */
+fun RepositoryHandler.noelware(snapshots: Boolean = false) {
+    maven {
+        url = URI.create("https://maven.noelware.org${if (snapshots) "/snapshots" else ""}")
     }
 }
