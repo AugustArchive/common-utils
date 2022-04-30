@@ -39,10 +39,10 @@ jobs:
       - name: Checks out the repository
         uses: actions/checkout@v2
 
-      - name: Sets up Java v${{ matrix.java-version }}
-        uses: actions/setup-java@v2
+      - name: Sets up Java ${{ matrix.java-version }}
+        uses: actions/setup-java@v3
         with:
-          distribution: adopt # AdoptOpenJDK is <3
+          distribution: termuin
           java-version: ${{ matrix.java-version }}
 
       - name: Setup Gradle cache
