@@ -1,5 +1,4 @@
 /*
- * 🤹 common-utils: Common Kotlin utilities made for my personal usage.
  * Copyright (c) 2021-2022 Noel <cutie@floofy.dev>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -21,39 +20,24 @@
  * SOFTWARE.
  */
 
-import org.gradle.api.tasks.wrapper.Wrapper.DistributionType.ALL
-import dev.floofy.utils.gradle.*
+package gay.floof.utils.slf4j.tests
 
-plugins {
-    id("com.diffplug.spotless")
-    id("org.jetbrains.dokka")
-    kotlin("jvm")
-    `maven-publish`
+import gay.floof.utils.slf4j.*
+import org.slf4j.LoggerFactory
+import kotlin.test.Test
+import kotlin.test.assertNotNull
+import kotlin.test.assertSame
+
+private class TestClass {
+    val log by logging<TestClass>()
 }
 
-val DOKKA_OUTPUT = "${rootProject.projectDir}/docs"
-group = "dev.floofy"
-version = VERSION
+object Slf4jTests {
+    @Test
+    fun `returns a valid delegate`() {
+        val c = TestClass()
 
-repositories {
-    mavenCentral()
-    mavenLocal()
-}
-
-tasks {
-    wrapper {
-        version = "7.4.2"
-        distributionType = ALL
-    }
-
-    clean {
-        delete(DOKKA_OUTPUT)
-    }
-
-    dokkaHtmlMultiModule.configure {
-        dependsOn(clean)
-
-        includes.from("README.md")
-        outputDirectory.set(file(DOKKA_OUTPUT))
+        assertNotNull(c, "`log` should be Logger, not Logger?")
+        assertSame(c.log, LoggerFactory.getLogger(TestClass::class.java), "class comparison was not the same :<")
     }
 }

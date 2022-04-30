@@ -1,6 +1,5 @@
-/*
- * 🤹 common-utils: Common Kotlin utilities made for my personal usage.
- * Copyright (c) 2021-2022 Noel <cutie@floofy.dev>
+/**
+ * Copyright (c) 2021 Noel <cutie@floofy.dev>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,39 +20,40 @@
  * SOFTWARE.
  */
 
-import org.gradle.api.tasks.wrapper.Wrapper.DistributionType.ALL
-import dev.floofy.utils.gradle.*
+package gay.floof.utils.gradle
 
-plugins {
-    id("com.diffplug.spotless")
-    id("org.jetbrains.dokka")
-    kotlin("jvm")
-    `maven-publish`
-}
+import org.gradle.api.provider.Property
+import org.gradle.api.publish.maven.MavenPom
 
-val DOKKA_OUTPUT = "${rootProject.projectDir}/docs"
-group = "dev.floofy"
-version = VERSION
+private infix fun <T> Property<T>.by(value: T) = set(value)
+fun MavenPom.configurePom(module: String) {
+    description by "Common Utilities for Noel's work."
+    name by "commons-$module"
+    url by "https://commons.floof.gay"
 
-repositories {
-    mavenCentral()
-    mavenLocal()
-}
-
-tasks {
-    wrapper {
-        version = "7.4.2"
-        distributionType = ALL
+    developers {
+        developer {
+            timezone by "America/Phoenix"
+            name by "Noel"
+            url by "https://floof.gay"
+        }
     }
 
-    clean {
-        delete(DOKKA_OUTPUT)
+    issueManagement {
+        system by "GitHub"
+        url by "https://github.com/auguwu/common-utils/issues"
     }
 
-    dokkaHtmlMultiModule.configure {
-        dependsOn(clean)
+    licenses {
+        license {
+            name by "MIT"
+            url by "https://opensource.org/licenses/MIT"
+        }
+    }
 
-        includes.from("README.md")
-        outputDirectory.set(file(DOKKA_OUTPUT))
+    scm {
+        developerConnection by "scm:git:ssh://git@github.com:auguwu/common-utils.git"
+        connection by "scm:git:ssh://github.com/auguwu/common-utils.git"
+        url by "https://github.com/auguwu/common-utils"
     }
 }

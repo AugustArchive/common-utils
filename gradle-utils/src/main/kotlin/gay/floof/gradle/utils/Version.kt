@@ -1,5 +1,4 @@
 /*
- * 🤹 common-utils: Common Kotlin utilities made for my personal usage.
  * Copyright (c) 2021-2022 Noel <cutie@floofy.dev>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -21,39 +20,35 @@
  * SOFTWARE.
  */
 
-import org.gradle.api.tasks.wrapper.Wrapper.DistributionType.ALL
-import dev.floofy.utils.gradle.*
+package gay.floof.gradle.utils
 
-plugins {
-    id("com.diffplug.spotless")
-    id("org.jetbrains.dokka")
-    kotlin("jvm")
-    `maven-publish`
-}
+/**
+ * Represents a simple version class to use for versioning.
+ * @param major The major version.
+ * @param minor The minor version.
+ * @param patch The patch version.
+ * @param build The build version, this is only needed if the [ReleaseType] is not `None`.
+ * @param release The release type to use for the finalized result. Defaults to [ReleaseType.None].
+ */
+class Version(
+    private val major: Int,
+    private val minor: Int,
+    private val patch: Int,
+    private val build: Int = 0,
+    private val release: ReleaseType = ReleaseType.None
+) {
+    override fun toString(): String = buildString {
+        append("$major.$minor")
+        if (patch != 0) {
+            append(".$patch")
+        }
 
-val DOKKA_OUTPUT = "${rootProject.projectDir}/docs"
-group = "dev.floofy"
-version = VERSION
+        if (release != ReleaseType.None) {
+            append("-${release.suffix}")
+        }
 
-repositories {
-    mavenCentral()
-    mavenLocal()
-}
-
-tasks {
-    wrapper {
-        version = "7.4.2"
-        distributionType = ALL
-    }
-
-    clean {
-        delete(DOKKA_OUTPUT)
-    }
-
-    dokkaHtmlMultiModule.configure {
-        dependsOn(clean)
-
-        includes.from("README.md")
-        outputDirectory.set(file(DOKKA_OUTPUT))
+        if (build != 0 && release != ReleaseType.None) {
+            append(".$build")
+        }
     }
 }

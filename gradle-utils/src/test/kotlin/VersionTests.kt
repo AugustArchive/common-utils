@@ -1,5 +1,4 @@
 /*
- * 🤹 common-utils: Common Kotlin utilities made for my personal usage.
  * Copyright (c) 2021-2022 Noel <cutie@floofy.dev>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -21,39 +20,28 @@
  * SOFTWARE.
  */
 
-import org.gradle.api.tasks.wrapper.Wrapper.DistributionType.ALL
-import dev.floofy.utils.gradle.*
+package gay.floof.gradle.utils.tests
 
-plugins {
-    id("com.diffplug.spotless")
-    id("org.jetbrains.dokka")
-    kotlin("jvm")
-    `maven-publish`
-}
+import gay.floof.gradle.utils.*
+import org.junit.jupiter.api.Test
+import kotlin.test.assertEquals
 
-val DOKKA_OUTPUT = "${rootProject.projectDir}/docs"
-group = "dev.floofy"
-version = VERSION
-
-repositories {
-    mavenCentral()
-    mavenLocal()
-}
-
-tasks {
-    wrapper {
-        version = "7.4.2"
-        distributionType = ALL
+object VersionTests {
+    @Test
+    fun `returns 2 dot 0 as the version number`() {
+        val version = Version(2, 0, 0)
+        assertEquals("$version", "2.0", "Version(2, 0, 0) != 2.0")
     }
 
-    clean {
-        delete(DOKKA_OUTPUT)
+    @Test
+    fun `returns 2 dot 0 dot 1 dash rc dot 2`() { // returns 2.0.1.-rc.2
+        val version = Version(2, 0, 1, 2, ReleaseType.ReleaseCandidate)
+        assertEquals("$version", "2.0.1-rc.2", "Version(2, 0, 1, 2, ReleaseType.ReleaseCandidate) != 2.0.1-rc.2")
     }
 
-    dokkaHtmlMultiModule.configure {
-        dependsOn(clean)
-
-        includes.from("README.md")
-        outputDirectory.set(file(DOKKA_OUTPUT))
+    @Test
+    fun `returns 2 dot 0 dash beta`() { // returns 2.0-beta
+        val version = Version(2, 0, 0, 0, ReleaseType.Beta)
+        assertEquals("$version", "2.0-beta", "Version(2, 0, 0, 0, ReleaseType.Beta) != 2.0-beta")
     }
 }

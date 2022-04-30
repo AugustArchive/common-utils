@@ -1,5 +1,4 @@
 /*
- * 🤹 common-utils: Common Kotlin utilities made for my personal usage.
  * Copyright (c) 2021-2022 Noel <cutie@floofy.dev>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -21,39 +20,30 @@
  * SOFTWARE.
  */
 
-import org.gradle.api.tasks.wrapper.Wrapper.DistributionType.ALL
-import dev.floofy.utils.gradle.*
+package gay.floof.utils.slf4j
 
-plugins {
-    id("com.diffplug.spotless")
-    id("org.jetbrains.dokka")
-    kotlin("jvm")
-    `maven-publish`
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
+import kotlin.properties.ReadOnlyProperty
+import kotlin.reflect.KClass
+import kotlin.reflect.KProperty
+
+/**
+ * Implements a [ReadOnlyProperty] to provide a simple syntax for constructing slf4j loggers.
+ */
+class Slf4jDelegate(private val kClass: KClass<*>): ReadOnlyProperty<Any, Logger> {
+    override fun getValue(thisRef: Any, property: KProperty<*>): Logger = LoggerFactory.getLogger(kClass.java)
 }
 
-val DOKKA_OUTPUT = "${rootProject.projectDir}/docs"
-group = "dev.floofy"
-version = VERSION
+/**
+ * Create a new [Slf4jDelegate] property.
+ * @param cls The class to use
+ * @return The read-only property instance
+ */
+fun <T: KClass<*>> logging(cls: T): Slf4jDelegate = Slf4jDelegate(cls)
 
-repositories {
-    mavenCentral()
-    mavenLocal()
-}
-
-tasks {
-    wrapper {
-        version = "7.4.2"
-        distributionType = ALL
-    }
-
-    clean {
-        delete(DOKKA_OUTPUT)
-    }
-
-    dokkaHtmlMultiModule.configure {
-        dependsOn(clean)
-
-        includes.from("README.md")
-        outputDirectory.set(file(DOKKA_OUTPUT))
-    }
-}
+/**
+ * Create a new [Slf4jDelegate] with [T] as the reified class.
+ * @return The read-only property instance
+ */
+inline fun <reified T> logging(): Slf4jDelegate = logging(T::class)

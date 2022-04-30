@@ -1,5 +1,4 @@
 /*
- * 🤹 common-utils: Common Kotlin utilities made for my personal usage.
  * Copyright (c) 2021-2022 Noel <cutie@floofy.dev>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -21,39 +20,37 @@
  * SOFTWARE.
  */
 
-import org.gradle.api.tasks.wrapper.Wrapper.DistributionType.ALL
-import dev.floofy.utils.gradle.*
+@file:Suppress("UNUSED")
+package gay.floof.gradle.utils
 
-plugins {
-    id("com.diffplug.spotless")
-    id("org.jetbrains.dokka")
-    kotlin("jvm")
-    `maven-publish`
-}
+/**
+ * Returns the release type of specific [Version].
+ */
+enum class ReleaseType(val suffix: String) {
+    /**
+     * Represents a release candidate release, this is when this project
+     * is almost through completion of a new release.
+     */
+    ReleaseCandidate("rc"),
 
-val DOKKA_OUTPUT = "${rootProject.projectDir}/docs"
-group = "dev.floofy"
-version = VERSION
+    /**
+     * Represents a snapshot release, that this is a pre-beta release and
+     * bugs will occur.
+     */
+    Snapshot("snapshot"),
 
-repositories {
-    mavenCentral()
-    mavenLocal()
-}
+    /**
+     * Represents a beta release, this might have some bugs to work out.
+     */
+    Beta("beta"),
 
-tasks {
-    wrapper {
-        version = "7.4.2"
-        distributionType = ALL
-    }
+    /**
+     * Full release! The default release type for a [Version] object.
+     */
+    None("");
 
-    clean {
-        delete(DOKKA_OUTPUT)
-    }
-
-    dokkaHtmlMultiModule.configure {
-        dependsOn(clean)
-
-        includes.from("README.md")
-        outputDirectory.set(file(DOKKA_OUTPUT))
+    companion object {
+        fun fromOrNull(suffix: String): ReleaseType? = values().find { it.suffix == suffix }
+        fun from(suffix: String): ReleaseType = fromOrNull(suffix) ?: error("Unknown release type: $suffix")
     }
 }
