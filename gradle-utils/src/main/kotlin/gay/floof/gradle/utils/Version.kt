@@ -1,4 +1,8 @@
 /*
+<<<<<<< HEAD
+ * 🤹 common-utils: Common Kotlin utilities made for my personal usage.
+=======
+>>>>>>> 07746b610a6a181a7a89382249d23d3bdab2c0ef
  * Copyright (c) 2021-2022 Noel <cutie@floofy.dev>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
