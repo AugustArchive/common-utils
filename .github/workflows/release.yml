@@ -30,9 +30,6 @@ jobs:
       - name: Check if project can be built
         run: ./gradlew compileKotlin
 
-      - name: Run all tests
-        run: ./gradlew test
-
       - name: Apply secrets in gradle/publishing.properties
         run: |
           echo "${{ secrets.S3_PROPS }}" >> gradle/publishing.properties
