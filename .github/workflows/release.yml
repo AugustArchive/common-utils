@@ -35,4 +35,4 @@ jobs:
           echo "${{ secrets.S3_PROPS }}" >> gradle/publishing.properties
 
       - name: Publish!
-        run: ./gradlew publish -Dorg.gradle.s3.endpoint=${S3_ENDPOINT}
+        run: ./gradlew publish -Dorg.gradle.s3.endpoint=${{ secrets.S3_ENDPOINT }}
