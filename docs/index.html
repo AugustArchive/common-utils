@@ -1,59 +1,203 @@
+<!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>All modules</title>
-<link href="images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "";</script>    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    <link href="images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "";</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
 const savedDarkMode = storage ? JSON.parse(storage) : false
 if(savedDarkMode === true){
     document.getElementsByTagName("html")[0].classList.add("theme-dark")
 }</script>
-<script type="text/javascript" src="scripts/sourceset_dependencies.js" async="async"></script><link href="styles/style.css" rel="Stylesheet"><link href="styles/jetbrains-mono.css" rel="Stylesheet"><link href="styles/main.css" rel="Stylesheet"><link href="styles/prism.css" rel="Stylesheet"><link href="styles/logo-styles.css" rel="Stylesheet"><script type="text/javascript" src="scripts/clipboard.js" async="async"></script><script type="text/javascript" src="scripts/navigation-loader.js" async="async"></script><script type="text/javascript" src="scripts/platform-content-handler.js" async="async"></script><script type="text/javascript" src="scripts/main.js" defer="defer"></script><script type="text/javascript" src="scripts/prism.js" async="async"></script>  </head>
-  <body>
-    <div class="navigation-wrapper" id="navigation-wrapper">
-      <div id="leftToggler"><span class="icon-toggler"></span></div>
-      <div class="library-name"><a href="index.html">commons</a></div>
-      <div></div>
-      <div class="pull-right d-flex"><button id="theme-toggle-button"><span id="theme-toggle"></span></button>
+<script type="text/javascript" src="scripts/sourceset_dependencies.js" async="async"></script>
+<link href="styles/style.css" rel="Stylesheet">
+<link href="styles/jetbrains-mono.css" rel="Stylesheet">
+<link href="styles/main.css" rel="Stylesheet">
+<link href="styles/prism.css" rel="Stylesheet">
+<link href="styles/logo-styles.css" rel="Stylesheet">
+<script type="text/javascript" src="scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="scripts/prism.js" async="async"></script>
+</head>
+<body>
+<div class="navigation-wrapper" id="navigation-wrapper">
+    <div id="leftToggler"><span class="icon-toggler"></span></div>
+    <div class="library-name">
+            <a href="index.html">
+                    <span>commons</span>
+            </a>
+    </div>
+    <div>
+2.0.0    </div>
+    <div class="pull-right d-flex">
+        <button id="theme-toggle-button"><span id="theme-toggle"></span></button>
         <div id="searchBar"></div>
-      </div>
     </div>
-    <div id="container">
-      <div id="leftColumn">
+</div>
+<div id="container">
+    <div id="leftColumn">
         <div id="sideMenu"></div>
-      </div>
-      <div id="main">
-        <div class="main-content" id="content" pageIds="commons::.ext/allModules///PointingToDeclaration//0">
-          <div class="breadcrumbs"></div>
-          <div class="cover ">
-            <h2 class="">All modules:</h2>
-            <div class="table"><a data-name="-1647697142%2FMain%2F0" anchor-label="gradle-utils" id="-1647697142%2FMain%2F0" data-filterable-set=""></a>
-              <div class="table-row">
-                <div class="main-subrow ">
-                  <div class="w-100"><span class="inline-flex">
-                      <div><a href="gradle-utils/index.html">gradle-utils</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1647697142%2FMain%2F0"></span>
-                        <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                      </span></span></div>
-                  <div><span class="brief-comment"></span></div>
-                </div>
-              </div>
-<a data-name="1797341514%2FMain%2F0" anchor-label="slf4j" id="1797341514%2FMain%2F0" data-filterable-set=""></a>
-              <div class="table-row">
-                <div class="main-subrow ">
-                  <div class="w-100"><span class="inline-flex">
-                      <div><a href="slf4j/index.html">slf4j</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1797341514%2FMain%2F0"></span>
-                        <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                      </span></span></div>
-                  <div><span class="brief-comment"></span></div>
-                </div>
-              </div>
-            </div>
-          </div>
+    </div>
+    <div id="main">
+<div class="main-content" id="content" pageIds="commons::.ext/allModules///PointingToDeclaration//0">
+  <div class="breadcrumbs"></div>
+  <div class="cover ">
+    <div class="cover ">
+      <h1 class="">🤹 common-utils</h1>
+      <div class="sample-container">
+        <pre><code class="block lang-kotlin" theme="idea">
+            <p class="paragraph">Common Kotlin utilities made for my personal usage, comes with SLF4J utilities, common extensions, ansi-colours, common Gradle utilities, and more.</p>
+            <p class="paragraph"><a href="https://commons.floof.gay">📜 <strong>Documentation</strong></a></p>
+          </code></pre>
+<span class="top-right-position"><span class="copy-icon"></span>
+          <div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div>
+        </span></div>
+      <h2 class=""> Utilities</h2>
+      <h3 class=""><code class="lang-kotlin">gay.floof.utils.slf4j</code></h3>
+      <div class="sample-container">
+        <pre><code class="block lang-kotlin" theme="idea">
+            <p class="paragraph">:warning: Only available for Kotlin - JVM.</p>
+          </code></pre>
+<span class="top-right-position"><span class="copy-icon"></span>
+          <div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div>
+        </span></div>
+      <ul>
+        <li>
+          <p class="paragraph">Comes with a read-only delegate property for constructing SLF4J loggers:</p>
+        </li>
+      </ul>
+      <div class="sample-container">
+        <pre><code class="block lang-kt" theme="idea">import gay.floof.utils.slf4j.*<br><br>object Something {<br>   val logger by logging&lt;Something&gt;() // =&gt; org.slf4j.Logger<br>}</code></pre>
+<span class="top-right-position"><span class="copy-icon"></span>
+          <div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div>
+        </span></div>
+      <h3 class=""><code class="lang-kotlin">gay.floof.utils.gradle</code></h3>
+      <ul>
+        <li>
+          <p class="paragraph">Provides an extension for <strong>noel()</strong> and <strong>noelware()</strong> in a <code class="lang-kotlin">repositories</code> block.</p>
+        </li>
+        <li>
+          <p class="paragraph">Provides a Version class that I repeat in all of my Kotlin projects</p>
+        </li>
+        <li>
+          <p class="paragraph">Provides the following groups below as a function in <code class="lang-kotlin">dependencies</code> to import from the Noel and Noelware Maven repository.</p>
+        </li>
+        <ul>
+          <li>
+            <p class="paragraph">The following groups are available: <strong>floof</strong>, <strong>floofy</strong>, <strong>nino</strong>, and <strong>arisu</strong>.</p>
+          </li>
+          <li>
+            <p class="paragraph"><strong>floof</strong> will return: <code class="lang-kotlin">gay.floof.{group}:{package}:{version}</code></p>
+          </li>
+          <li>
+            <p class="paragraph"><strong>floofy</strong> will return: <code class="lang-kotlin">dev.floofy.{group}:{package}:{version}</code></p>
+          </li>
+          <li>
+            <p class="paragraph"><strong>nino</strong> will return: <code class="lang-kotlin">sh.nino.{group}:{package}:{version}</code></p>
+          </li>
+          <li>
+            <p class="paragraph"><strong>arisu</strong> will return: <code class="lang-kotlin">land.arisu.{group}:{package}:{version}</code></p>
+          </li>
+          <li>
+            <p class="paragraph"><strong>noelware</strong> will return: <code class="lang-kotlin">org.noelware.{group}:{package}:{version}</code></p>
+          </li>
+        </ul>
+      </ul>
+      <h2 class=""> Installation</h2>
+      <h3 class=""> Gradle</h3>
+      <h4 class=""> Kotlin DSL</h4>
+      <div class="sample-container">
+        <pre><code class="block lang-kotlin" theme="idea">repositories {<br>    maven {<br>        url = uri(&quot;https://maven.floofy.dev/repo/releases&quot;)<br>    }<br>}<br><br>dependencies {<br>    implementation(&quot;gay.floof.utils:commons-&lt;package&gt;:&lt;VERSION&gt;&quot;)<br>}</code></pre>
+<span class="top-right-position"><span class="copy-icon"></span>
+          <div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div>
+        </span></div>
+      <h4 class=""> Groovy DSL</h4>
+      <div class="sample-container">
+        <pre><code class="block lang-groovy" theme="idea">repositories {<br>    maven {<br>        url &quot;https://maven.floofy.dev/repo/releases&quot;<br>    }<br>}<br><br>dependencies {<br>    implementation &quot;gay.floof.utils:utils-&lt;package&gt;:&lt;VERSION&gt;&quot;<br>}</code></pre>
+<span class="top-right-position"><span class="copy-icon"></span>
+          <div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div>
+        </span></div>
+      <h3 class=""> Maven</h3>
+      <div class="sample-container">
+        <pre><code class="block lang-xml" theme="idea">&lt;repositories&gt;<br>    &lt;repository&gt;<br>        &lt;id&gt;noel-maven&lt;/id&gt;<br>        &lt;url&gt;https://maven.floofy.dev/repo/releases&lt;/url&gt;<br>    &lt;/repository&gt;<br>&lt;/repositories&gt;</code></pre>
+<span class="top-right-position"><span class="copy-icon"></span>
+          <div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div>
+        </span></div>
+      <div class="sample-container">
+        <pre><code class="block lang-xml" theme="idea">&lt;dependencies&gt;<br>    &lt;dependency&gt;<br>        &lt;groupId&gt;gay.floof.utils&lt;/groupId&gt;<br>        &lt;artifactId&gt;utils-{{PACKAGE}}&lt;/artifactId&gt;<br>        &lt;version&gt;{{VERSION}}&lt;/version&gt;<br>        &lt;type&gt;pom&lt;/type&gt;<br>    &lt;/dependency&gt;<br>&lt;/dependencies&gt;</code></pre>
+<span class="top-right-position"><span class="copy-icon"></span>
+          <div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div>
+        </span></div>
+      <h2 class=""> License</h2>
+      <p class="paragraph"><strong>common-utils</strong> is released under the <strong>GPL-3.0</strong> License.</p>
+    </div>
+    <h2 class="">All modules:</h2>
+    <div class="table"><a data-name="-625313683%2FMain%2F0" anchor-label="exposed" id="-625313683%2FMain%2F0" data-filterable-set=""></a>
+      <div class="table-row">
+        <div class="main-subrow ">
+          <div class="w-100"><span class="inline-flex">
+              <div><a href="exposed/index.html">exposed</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-625313683%2FMain%2F0"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div><span class="brief-comment"></span></div>
         </div>
-        <div class="footer"><span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2022 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span></div>
+      </div>
+<a data-name="-1017756629%2FMain%2F0" anchor-label="extensions-koin" id="-1017756629%2FMain%2F0" data-filterable-set=""></a>
+      <div class="table-row">
+        <div class="main-subrow ">
+          <div class="w-100"><span class="inline-flex">
+              <div><a href="extensions-koin/index.html">extensions-koin</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1017756629%2FMain%2F0"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div><span class="brief-comment"></span></div>
+        </div>
+      </div>
+<a data-name="1249969907%2FMain%2F0" anchor-label="extensions-kotlin" id="1249969907%2FMain%2F0" data-filterable-set=""></a>
+      <div class="table-row">
+        <div class="main-subrow ">
+          <div class="w-100"><span class="inline-flex">
+              <div><a href="extensions-kotlin/index.html">extensions-kotlin</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1249969907%2FMain%2F0"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div><span class="brief-comment"></span></div>
+        </div>
+      </div>
+<a data-name="-1647697142%2FMain%2F0" anchor-label="gradle-utils" id="-1647697142%2FMain%2F0" data-filterable-set=""></a>
+      <div class="table-row">
+        <div class="main-subrow ">
+          <div class="w-100"><span class="inline-flex">
+              <div><a href="gradle-utils/index.html">gradle-utils</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1647697142%2FMain%2F0"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div><span class="brief-comment"></span></div>
+        </div>
+      </div>
+<a data-name="1797341514%2FMain%2F0" anchor-label="slf4j" id="1797341514%2FMain%2F0" data-filterable-set=""></a>
+      <div class="table-row">
+        <div class="main-subrow ">
+          <div class="w-100"><span class="inline-flex">
+              <div><a href="slf4j/index.html">slf4j</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1797341514%2FMain%2F0"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div><span class="brief-comment"></span></div>
+        </div>
       </div>
     </div>
-  </body>
+  </div>
+</div>
+        <div class="footer"><span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2022 Copyright</span><span
+                class="pull-right"><span>Generated by </span><a
+                href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+        </div>
+    </div>
+</div>
+</body>
 </html>
-

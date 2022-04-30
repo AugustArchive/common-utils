@@ -1,7 +1,15 @@
 $dokka.format:html-v1
 $dokka.linkExtension:html
 
+module:exposed
+dev.floofy.utils.exposed
+module:extensions-koin
+dev.floofy.utils.koin
+module:extensions-kotlin
+dev.floofy.utils.kotlin
 module:gradle-utils
+dev.floofy.utils.gradle
 gay.floof.gradle.utils
 module:slf4j
+dev.floofy.utils.slf4j
 gay.floof.utils.slf4j
