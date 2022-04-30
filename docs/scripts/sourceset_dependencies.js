@@ -1,0 +1,1 @@
+sourceset_dependencies = '{":slf4j:dokkaHtmlPartial/main":[],":gradle-utils:dokkaHtmlPartial/main":[]}'
