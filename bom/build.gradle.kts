@@ -73,6 +73,7 @@ dependencies {
             if (subproject.plugins.hasPlugin("maven-publish") && subproject.name != name) {
                 subproject.publishing.publications.withType<MavenPublication> {
                     if (!artifactId.endsWith("-metadata") && !artifactId.endsWith("-kotlinMultiplatform")) {
+                        println("$groupId:$artifactId:$version")
                         api("$groupId:$artifactId:$version")
                     }
                 }

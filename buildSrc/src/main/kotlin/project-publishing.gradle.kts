@@ -82,39 +82,48 @@ val dokkaJar by tasks.registering(Jar::class) {
 
 publishing {
     publications {
-        create<MavenPublication>("remi") {
+        create<MavenPublication>("commons") {
             // Since `remi-bom` doesn't include any
             // sources, let's just do this :blep:
             from(components["kotlin"])
 
-            artifactId = "remi-${project.name}"
-            groupId = "org.noelware.remi"
-            version = "$VERSION"
+            artifactId = if (project.name == "gradle-utils") {
+                "commons-gradle"
+            } else {
+                if (project.name.startsWith("extensions")) {
+                    val actualName = project.name.split("-").last()
+                    "commons-$actualName-extensions"
+                } else {
+                    project.name
+                }
+            }
+
+            groupId = "dev.floofy.commons"
+            version = VERSION
 
             artifact(sourcesJar.get())
             artifact(dokkaJar.get())
 
             pom {
-                description by "Library to handling files for persistent storage with Google Cloud Storage, Amazon S3, and the file system."
-                name by "remi-${project.name}"
-                url by "https://docs.noelware.org/libs/remi"
-
-                organization {
-                    name by "Noelware"
-                    url by "https://noelware.org"
+                description by "Common utilities to do things."
+                name by if (project.name == "gradle-utils") {
+                    "commons-gradle"
+                } else {
+                    if (project.name.startsWith("extensions")) {
+                        val actualName = project.name.split("-").last()
+                        "$actualName-extensions"
+                    } else {
+                        project.name
+                    }
                 }
+
+                url by "https://docs.noelware.org/libs/remi"
 
                 developers {
                     developer {
                         name by "Noel"
                         email by "cutie@floofy.dev"
                         url by "https://floofy.dev"
-                    }
-
-                    developer {
-                        name by "Noelware Team"
-                        email by "team@noelware.org"
-                        url by "https://noelware.org"
                     }
                 }
 
