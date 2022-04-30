@@ -140,7 +140,7 @@ publishing {
     }
 
     repositories {
-        val url = if (snapshotRelease) "s3://maven.noelware.org/snapshots" else "s3://maven.noelware.org"
+        val url = if (snapshotRelease) "s3://maven.floofy.dev/repo/snapshots" else "s3://maven.floofy.dev/repo/releases"
         maven(url) {
             credentials(AwsCredentials::class.java) {
                 accessKey = publishingProps.getProperty("s3.accessKey") ?: System.getenv("NOEL_PUBLISHING_ACCESS_KEY") ?: ""
