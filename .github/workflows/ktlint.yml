@@ -33,7 +33,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        java-version: [17, 18]
+        java-version: [17]
 
     steps:
       - name: Checks out the repository
