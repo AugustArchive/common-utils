@@ -46,8 +46,8 @@ if (publishingPropsFile.exists()) {
     publishingProps.load(publishingPropsFile.inputStream())
 } else {
     // Check if we do in environment variables
-    val accessKey = System.getenv("NOELWARE_PUBLISHING_ACCESS_KEY") ?: ""
-    val secretKey = System.getenv("NOELWARE_PUBLISHING_SECRET_KEY") ?: ""
+    val accessKey = System.getenv("NOEL_PUBLISHING_ACCESS_KEY") ?: ""
+    val secretKey = System.getenv("NOEL_PUBLISHING_SECRET_KEY") ?: ""
 
     if (accessKey.isNotEmpty() && secretKey.isNotEmpty()) {
         val data = """
@@ -143,8 +143,8 @@ publishing {
         val url = if (snapshotRelease) "s3://maven.noelware.org/snapshots" else "s3://maven.noelware.org"
         maven(url) {
             credentials(AwsCredentials::class.java) {
-                accessKey = publishingProps.getProperty("s3.accessKey") ?: System.getenv("NOELWARE_PUBLISHING_ACCESS_KEY") ?: ""
-                secretKey = publishingProps.getProperty("s3.secretKey") ?: System.getenv("NOELWARE_PUBLISHING_SECRET_KEY") ?: ""
+                accessKey = publishingProps.getProperty("s3.accessKey") ?: System.getenv("NOEL_PUBLISHING_ACCESS_KEY") ?: ""
+                secretKey = publishingProps.getProperty("s3.secretKey") ?: System.getenv("NOEL_PUBLISHING_SECRET_KEY") ?: ""
             }
         }
     }

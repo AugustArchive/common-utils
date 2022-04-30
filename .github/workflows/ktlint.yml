@@ -1,11 +1,23 @@
 name: Build / Linting errors
 on:
   pull_request:
+    branches:
+      - 'feature/**'
+      - 'issue/gh-**'
+      - master
+    paths-ignore:
+      - '.github/**'
+      - 'assets/'
+      - .dockerignore
+      - gradle.properties
+      - '**.md'
+      - LICENSE
+      - renovate.json
+      - settings.gradle.kts
   push:
     branches:
       - 'feature/**'
       - 'issue/gh-**'
-      - trunk
       - master
     paths-ignore:
       - '.github/**'
@@ -21,7 +33,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        java-version: [16, 17]
+        java-version: [17, 18]
 
     steps:
       - name: Checks out the repository
@@ -49,6 +61,3 @@ jobs:
 
       - name: Builds the project for any errors
         run: ./gradlew compileKotlin
-
-      - name: Test library
-        run: ./gradlew test
