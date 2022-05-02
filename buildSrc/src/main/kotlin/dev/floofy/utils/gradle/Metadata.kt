@@ -28,7 +28,7 @@ import org.gradle.api.JavaVersion
 /**
  * Returns the current version of `commons-utils` package.
  */
-val VERSION = "2.0.1"
+val VERSION = "2.1.0"
 
 /**
  * The Java version it's being compiled to.

@@ -83,19 +83,12 @@ val dokkaJar by tasks.registering(Jar::class) {
 publishing {
     publications {
         create<MavenPublication>("commons") {
-            // Since `remi-bom` doesn't include any
-            // sources, let's just do this :blep:
             from(components["kotlin"])
 
             artifactId = if (project.name == "gradle-utils") {
-                "commons-gradle"
+                "gradle"
             } else {
-                if (project.name.startsWith("extensions")) {
-                    val actualName = project.name.split("-").last()
-                    "commons-$actualName-extensions"
-                } else {
-                    project.name
-                }
+                project.name
             }
 
             groupId = "dev.floofy.commons"
@@ -107,17 +100,12 @@ publishing {
             pom {
                 description by "Common utilities to do things."
                 name by if (project.name == "gradle-utils") {
-                    "commons-gradle"
+                    "gradle"
                 } else {
-                    if (project.name.startsWith("extensions")) {
-                        val actualName = project.name.split("-").last()
-                        "$actualName-extensions"
-                    } else {
-                        project.name
-                    }
+                    project.name
                 }
 
-                url by "https://docs.noelware.org/libs/remi"
+                url by "https://commons.floofy.dev"
 
                 developers {
                     developer {
@@ -152,8 +140,8 @@ publishing {
         val url = if (snapshotRelease) "s3://maven.floofy.dev/repo/snapshots" else "s3://maven.floofy.dev/repo/releases"
         maven(url) {
             credentials(AwsCredentials::class.java) {
-                accessKey = publishingProps.getProperty("s3.accessKey") ?: System.getenv("NOEL_PUBLISHING_ACCESS_KEY") ?: ""
-                secretKey = publishingProps.getProperty("s3.secretKey") ?: System.getenv("NOEL_PUBLISHING_SECRET_KEY") ?: ""
+                accessKey = publishingProps.getProperty("s3.accessKey") ?: ""
+                secretKey = publishingProps.getProperty("s3.secretKey") ?: ""
             }
         }
     }

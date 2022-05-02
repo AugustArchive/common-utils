@@ -191,9 +191,9 @@ fun RepositoryHandler.noel(snapshots: Boolean = false) {
  * @param snapshots If the repository should be configured to use snapshot releases.
  */
 fun RepositoryHandler.noelware(snapshots: Boolean = false) {
-    val suffix = if (snapshots) "" else "releases"
+    val suffix = if (snapshots) "/snapshots" else ""
 
     maven {
-        it.url = URI.create("https://maven.noelware.org/$suffix")
+        it.url = URI.create("https://maven.noelware.org$suffix")
     }
 }
