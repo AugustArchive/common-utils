@@ -3,31 +3,6 @@
 >
 > [📜 **Documentation**](https://commons.floof.gay)
 
-## Utilities
-### `gay.floof.utils.slf4j`
-> :warning: Only available for Kotlin - JVM.
-
-- Comes with a read-only delegate property for constructing SLF4J loggers:
-
-```kt
-import gay.floof.utils.slf4j.*
-
-object Something {
-   val logger by logging<Something>() // => org.slf4j.Logger
-}
-```
-
-### `gay.floof.utils.gradle`
-- Provides an extension for **noel()** and **noelware()** in a `repositories` block.
-- Provides a Version class that I repeat in all of my Kotlin projects
-- Provides the following groups below as a function in `dependencies` to import from the Noel and Noelware Maven repository.
-   - The following groups are available: **floof**, **floofy**, **nino**, and **arisu**.
-   - **floof** will return: `gay.floof.{group}:{package}:{version}`
-   - **floofy** will return: `dev.floofy.{group}:{package}:{version}`
-   - **nino** will return: `sh.nino.{group}:{package}:{version}`
-   - **arisu** will return: `land.arisu.{group}:{package}:{version}`
-   - **noelware** will return: `org.noelware.{group}:{package}:{version}`
-
 ## Installation
 ### Gradle
 #### Kotlin DSL

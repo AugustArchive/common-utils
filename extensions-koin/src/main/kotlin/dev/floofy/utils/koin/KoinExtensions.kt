@@ -29,7 +29,7 @@ import kotlin.properties.ReadOnlyProperty
 /**
  * Readonly property to quickly get a reference of [T].
  */
-inline fun <reified T> inject(): ReadOnlyProperty<T, Any?> = ReadOnlyProperty { _, _ ->
+inline fun <reified T> inject(): ReadOnlyProperty<Any?, T> = ReadOnlyProperty { _, _ ->
     GlobalContext.retrieve()
 }
 

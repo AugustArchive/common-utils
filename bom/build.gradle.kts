@@ -94,7 +94,7 @@ publishing {
             pom {
                 description by "Bill of Materials for `common-utils`"
                 name by "commons-bom"
-                url by "https://docs.noelware.org/libs/remi"
+                url by "https://commons.floofy.dev"
 
                 organization {
                     name by "Noel"
