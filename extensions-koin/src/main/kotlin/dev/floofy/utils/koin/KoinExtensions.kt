@@ -35,6 +35,13 @@ inline fun <reified T> inject(): ReadOnlyProperty<Any?, T> = ReadOnlyProperty { 
 }
 
 /**
+ * Readonly property to get a reference of [T] or null if it wasn't found in the Koin application.
+ */
+inline fun <reified T> injectOrNull(): ReadOnlyProperty<Any?, T?> = ReadOnlyProperty { _, _ ->
+    GlobalContext.retrieveOrNull()
+}
+
+/**
  * Simple method to return an object as [T] from the current Koin application
  */
 inline fun <reified T> GlobalContext.retrieve(): T = get().get()
