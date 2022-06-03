@@ -21,16 +21,30 @@
  * SOFTWARE.
  */
 
-package dev.floofy.utils.gradle
+package dev.floofy.utils.kotlin.threading
 
-import org.gradle.api.JavaVersion
-
-/**
- * Returns the current version of `commons-utils` package.
- */
-val VERSION = "2.1.1"
+import java.util.concurrent.ThreadFactory
+import java.util.concurrent.atomic.AtomicLong
 
 /**
- * The Java version it's being compiled to.
+ * Creates a new [ThreadFactory] object with a specified [name].
+ * @param name The name of the thread factory.
+ * @param priority The priority to set
+ * @param threadGroup The thread group to use.
+ * @return a new [ThreadFactory] object.
  */
-val JAVA_VERSION = JavaVersion.VERSION_17
+fun createThreadFactory(
+    name: String,
+    priority: Int? = null,
+    threadGroup: ThreadGroup = Thread.currentThread().threadGroup
+): ThreadFactory = object: ThreadFactory {
+    private val id = AtomicLong(0)
+
+    override fun newThread(r: Runnable): Thread {
+        val thread = Thread(threadGroup, r, "$name[${id.getAndIncrement()}]")
+        if (priority != null)
+            thread.priority = priority
+
+        return thread
+    }
+}

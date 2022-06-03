@@ -7,6 +7,7 @@ module:extensions-koin
 dev.floofy.utils.koin
 module:extensions-kotlin
 dev.floofy.utils.kotlin
+dev.floofy.utils.kotlin.threading
 module:gradle-utils
 dev.floofy.utils.gradle
 module:slf4j
