@@ -43,7 +43,7 @@ dependencies {
     api(kotlin("stdlib"))
 
     // kotlinx.coroutines
-    api(platform("org.jetbrains.kotlinx:kotlinx-coroutines-bom:1.6.2"))
+    api(platform("org.jetbrains.kotlinx:kotlinx-coroutines-bom:1.6.3"))
     api("org.jetbrains.kotlinx:kotlinx-coroutines-core")
     api("org.jetbrains.kotlinx:kotlinx-coroutines-jdk8")
 }
