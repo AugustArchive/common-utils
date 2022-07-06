@@ -21,6 +21,9 @@
  * SOFTWARE.
  */
 
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import org.gradle.api.JavaVersion
+
 plugins {
     `kotlin-dsl`
     groovy
@@ -37,4 +40,8 @@ dependencies {
     implementation("org.jetbrains.dokka:dokka-gradle-plugin:1.6.21")
     implementation(kotlin("gradle-plugin", version = "1.6.21"))
     implementation(gradleApi())
+}
+
+tasks.withType<KotlinCompile>().configureEach {
+    kotlinOptions.jvmTarget = JavaVersion.VERSION_17.toString()
 }

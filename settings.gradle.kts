@@ -27,6 +27,7 @@ include(
     ":bom",
     ":exposed",
     ":extensions-koin",
+    ":extensions-kord",
     ":extensions-kotlin",
     ":gradle-utils",
     ":slf4j"

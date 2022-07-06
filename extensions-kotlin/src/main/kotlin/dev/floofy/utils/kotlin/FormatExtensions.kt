@@ -27,16 +27,12 @@ package dev.floofy.utils.kotlin
 /**
  * Format this [Long] into a readable byte format.
  */
-fun Long.sizeToStr(): String {
-    val kilo = this / 1024L
-    val mega = kilo / 1024L
-    val giga = mega / 1024L
-
-    return when {
-        kilo < 1024 -> "${kilo.toDouble()}KB"
-        mega < 1024 -> "${mega.toDouble()}MB"
-        else -> "${giga}GB"
-    }
+fun Long.sizeToStr(long: Boolean = false): String = when {
+    terabytes > 0 -> "${toDouble()}${if (long) " terabytes" else "TB"}"
+    gigabytes > 0 -> "${toDouble()}${if (long) " gigabytes" else "GB"}"
+    megabytes > 0 -> "${toDouble()}${if (long) " megabytes" else "MB"}"
+    kilobytes > 0 -> "${toDouble()}${if (long) " kilobytes" else "KB"}"
+    else -> "${toDouble()}${if (long) " bytes" else "B"}"
 }
 
 /**

@@ -31,7 +31,7 @@ import kotlin.reflect.KClass
  * @param body The body function to call if [T] was not null.
  * @return The result from the [body] as [U].
  */
-fun <T, U> T?.ifNotNull(body: (T) -> U): U? = if (this != null) body(this) else null
+fun <T, U> T?.ifNotNull(body: T.() -> U): U? = if (this != null) body() else null
 
 /**
  * Calls the [body] function if [T] was null.
@@ -48,8 +48,8 @@ fun <T, U> T?.ifNull(body: T?.() -> U): U? = if (this == null) body() else null
  * @param body The body function to call.
  * @return The result from the [body] function as [U].
  */
-fun <T, U, E: Throwable> T.tryCatch(catchOn: KClass<E>, body: (T) -> U): U? = try {
-    body(this)
+fun <T, U, E: Throwable> T.tryCatch(catchOn: KClass<E>, body: T.() -> U): U? = try {
+    body()
 } catch (e: Throwable) {
     if (catchOn.isInstance(e)) {
         null

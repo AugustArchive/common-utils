@@ -23,6 +23,10 @@
 
 package dev.floofy.utils.gradle
 
+import java.io.File
+import java.io.IOException
+import java.util.concurrent.TimeUnit
+
 /**
  * Represents a simple version class to use for versioning.
  * @param major The major version.
@@ -51,5 +55,23 @@ class Version(
         if (build != 0 && release != ReleaseType.None) {
             append(".$build")
         }
+    }
+
+    /**
+     * Returns the commit sha if the project is in a Git repository. Returns `null`
+     * if a [IOException] had occurred.
+     */
+    fun getGitCommit(): String? = try {
+        val parts = "git rev-parse --short=8 HEAD".split("\\s".toRegex())
+        val proc = ProcessBuilder(*parts.toTypedArray())
+            .directory(File("."))
+            .redirectOutput(ProcessBuilder.Redirect.PIPE)
+            .redirectError(ProcessBuilder.Redirect.PIPE)
+            .start()
+
+        proc.waitFor(60, TimeUnit.SECONDS)
+        proc.inputStream.bufferedReader().readText()
+    } catch (e: IOException) {
+        null
     }
 }

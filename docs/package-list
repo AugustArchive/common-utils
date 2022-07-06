@@ -5,6 +5,8 @@ module:exposed
 dev.floofy.utils.exposed
 module:extensions-koin
 dev.floofy.utils.koin
+module:extensions-kord
+dev.floofy.utils.kord
 module:extensions-kotlin
 dev.floofy.utils.kotlin
 dev.floofy.utils.kotlin.threading
