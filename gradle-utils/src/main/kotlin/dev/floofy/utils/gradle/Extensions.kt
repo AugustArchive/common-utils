@@ -54,7 +54,7 @@ infix fun <T> Property<T>.by(value: T) {
  * someDirectoryProp by { dir("./some/dir") }
  * ```
  */
-infix fun <T> Property<T>.by(lazyValue: Property<T>.() -> Unit) {
+infix fun <T> Property<T>.byLazy(lazyValue: Property<T>.() -> Unit) {
     lazyValue()
 }
 
