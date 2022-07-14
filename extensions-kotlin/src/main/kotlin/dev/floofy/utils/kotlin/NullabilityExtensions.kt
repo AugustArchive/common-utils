@@ -22,6 +22,7 @@
  */
 
 @file:Suppress("UNUSED")
+
 package dev.floofy.utils.kotlin
 
 import kotlin.reflect.KClass
@@ -38,7 +39,7 @@ fun <T, U> T?.ifNotNull(body: T.() -> U): U? = if (this != null) body() else nul
  * @param body The body function to call if [T] was null.
  * @return The result from [body] as [U].
  */
-fun <T, U> T?.ifNull(body: T?.() -> U): U? = if (this == null) body() else null
+fun <T, U> T?.ifNull(body: () -> U): U? = if (this == null) body() else null
 
 /**
  * Tries a function method on [T], returns `null` if the exception was the instance
@@ -57,3 +58,12 @@ fun <T, U, E: Throwable> T.tryCatch(catchOn: KClass<E>, body: T.() -> U): U? = t
         throw e
     }
 }
+
+/**
+ * Tries a function method from [T], returns `null` if the exception was an instance of [E],
+ * if not, the exception will just throw on its own.
+ *
+ * @param body The body function to call.
+ * @return The result from the [body] function as [U].
+ */
+inline fun <reified E: Throwable, T, U> T.tryCatch(noinline body: T.() -> U): U? = tryCatch(E::class, body)

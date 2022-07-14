@@ -23,6 +23,7 @@
 
 @file:JvmName("NoelGradleExtensionsKt")
 @file:Suppress("UNUSED")
+
 package dev.floofy.utils.gradle
 
 import org.gradle.api.artifacts.Dependency
@@ -43,6 +44,18 @@ import java.net.URI
  */
 infix fun <T> Property<T>.by(value: T) {
     set(value)
+}
+
+/**
+ * Infix function to lazily evaluate a Gradle property from a DSL function. This is useful
+ * if you rely on **Property<Directory>** and such.
+ *
+ * ```kotlin
+ * someDirectoryProp by { dir("./some/dir") }
+ * ```
+ */
+infix fun <T> Property<T>.by(lazyValue: Property<T>.() -> Unit) {
+    lazyValue()
 }
 
 /**

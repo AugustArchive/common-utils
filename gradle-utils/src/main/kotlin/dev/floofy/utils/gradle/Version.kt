@@ -23,9 +23,12 @@
 
 package dev.floofy.utils.gradle
 
+import io.github.z4kn4fein.semver.*
+import io.github.z4kn4fein.semver.constraints.*
 import java.io.File
 import java.io.IOException
 import java.util.concurrent.TimeUnit
+import io.github.z4kn4fein.semver.Version as SemVersion
 
 /**
  * Represents a simple version class to use for versioning.
@@ -36,11 +39,11 @@ import java.util.concurrent.TimeUnit
  * @param release The release type to use for the finalized result. Defaults to [ReleaseType.None].
  */
 class Version(
-    private val major: Int,
-    private val minor: Int,
-    private val patch: Int,
-    private val build: Int = 0,
-    private val release: ReleaseType = ReleaseType.None
+    val major: Int,
+    val minor: Int,
+    val patch: Int,
+    val build: Int = 0,
+    val release: ReleaseType = ReleaseType.None
 ) {
     override fun toString(): String = buildString {
         append("$major.$minor")
@@ -56,6 +59,19 @@ class Version(
             append(".$build")
         }
     }
+
+    /**
+     * Converts this [Version] object into a [SemVersion] object.
+     * @param strict If the parsing should be strict or not.
+     * @return A [SemVersion] object.
+     */
+    fun toSemVer(strict: Boolean = false): SemVersion = "$this".toVersion(strict)
+
+    /**
+     * Checks if the [constraint] is satisfied by this current version object.
+     * @param constraint The constraint
+     */
+    infix fun satisifiedBy(constraint: Constraint): Boolean = constraint satisfiedBy toSemVer(false)
 
     /**
      * Returns the commit sha if the project is in a Git repository. Returns `null`

@@ -39,11 +39,11 @@ fun createThreadFactory(
     threadGroup: ThreadGroup = Thread.currentThread().threadGroup
 ): ThreadFactory = object: ThreadFactory {
     private val id = AtomicLong(0)
-
     override fun newThread(r: Runnable): Thread {
         val thread = Thread(threadGroup, r, "$name[${id.getAndIncrement()}]")
-        if (priority != null)
+        if (priority != null) {
             thread.priority = priority
+        }
 
         return thread
     }

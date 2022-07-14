@@ -40,7 +40,7 @@ repositories {
 
 dependencies {
     // Kotlin libraries
-    api(kotlin("stdlib"))
+    api(kotlin("stdlib", "1.7.10"))
 
     // kotlinx.coroutines
     api(platform("org.jetbrains.kotlinx:kotlinx-coroutines-bom:1.6.3"))
@@ -56,16 +56,18 @@ spotless {
 
         // We can't use the .editorconfig file, so we'll have to specify it here
         // issue: https://github.com/diffplug/spotless/issues/142
-        // ktlint 0.35.0 (default for Spotless) doesn't support trailing commas
-        ktlint("0.43.0")
-            .userData(
-                mapOf(
-                    "no-consecutive-blank-lines" to "true",
-                    "no-unit-return" to "true",
-                    "disabled_rules" to "no-wildcard-imports,colon-spacing",
-                    "indent_size" to "4"
-                )
-            )
+        ktlint()
+            .setUseExperimental(true)
+            .editorConfigOverride(mapOf(
+                "indent_size" to "4",
+                "disabled_rules" to "no-wildcard-imports,colon-spacing,annotation-spacing,filename",
+                "ij_kotlin_allow_trailing_comma" to "false",
+                "ktlint_code_style" to "official",
+                "experimental:fun-keyword-spacing" to "true",
+                "experimental:unnecessary-parentheses-before-trailing-lambda" to "true",
+                "no-unit-return" to "true",
+                "no-consecutive-blank-lines" to "true"
+            ))
     }
 }
 
@@ -84,7 +86,7 @@ tasks {
 
                 sourceLink {
                     localDirectory.set(file("src/main/kotlin"))
-                    remoteUrl.set(uri("https://github.com/Noelware/ktor-routing/tree/master/${project.name}/src/main/kotlin").toURL())
+                    remoteUrl.set(uri("https://github.com/auguwu/commons-utils/tree/master/${project.name}/src/main/kotlin").toURL())
                     remoteLineSuffix.set("#L")
                 }
             }

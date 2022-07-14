@@ -22,6 +22,7 @@
  */
 
 @file:Suppress("UNUSED")
+
 package dev.floofy.utils.koin
 
 import org.koin.core.context.GlobalContext
