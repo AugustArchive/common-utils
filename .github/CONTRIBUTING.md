@@ -1,4 +1,4 @@
-# Contributing to noel-commons
+# Contributing to commons-utils
 We gladly accept contributions, and we truly thank whoever supports this project!
 
 ## Code of Conduct
@@ -8,9 +8,8 @@ By contributing, we expect you to uphold this conduct.
 
 ## Ways to Contribute
 ### Bug Reporting
-Before submitting an issue make sure the issue hasn't been reported yet.
+Before submitting an issue make sure the issue hasn't been reported yet. Please consider these following guidelines when contributing:
 
-Please consider these following guidelines when contributing:
 * Be clear and concise with the title, it will help others link their issues and solutions to yours.
 * Specify the ways to reproduce the bug, so our development team and contributors can reproduce by themselves.
 * Show the output, using logs and screenshots, to help others understand your issue.

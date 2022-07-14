@@ -23,6 +23,10 @@
 
 rootProject.name = "commons"
 
+plugins {
+    id("com.gradle.enterprise") version "3.10.2"
+}
+
 include(
     ":bom",
     ":exposed",
@@ -32,3 +36,23 @@ include(
     ":gradle-utils",
     ":slf4j"
 )
+
+val buildScanServer = System.getProperty("dev.floofy.commons.build-scan-server", "") ?: ""
+gradleEnterprise {
+    buildScan {
+        if (buildScanServer.isNotEmpty()) {
+            server = buildScanServer
+            isCaptureTaskInputFiles = true
+            publishAlways()
+        } else {
+            termsOfServiceUrl = "https://gradle.com/terms-of-service"
+            termsOfServiceAgree = "yes"
+        }
+
+        obfuscation {
+            ipAddresses { listOf("0.0.0.0") }
+            hostname { "[redacted]" }
+            username { "[redacted]" }
+        }
+    }
+}
