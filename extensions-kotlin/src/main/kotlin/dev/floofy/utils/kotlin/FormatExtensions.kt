@@ -29,10 +29,10 @@ package dev.floofy.utils.kotlin
  * Format this [Long] into a readable byte format.
  */
 fun Long.sizeToStr(long: Boolean = false): String = when {
-    terabytes > 0 -> "${toDouble()}${if (long) " terabytes" else "TB"}"
-    gigabytes > 0 -> "${toDouble()}${if (long) " gigabytes" else "GB"}"
-    megabytes > 0 -> "${toDouble()}${if (long) " megabytes" else "MB"}"
-    kilobytes > 0 -> "${toDouble()}${if (long) " kilobytes" else "KB"}"
+    this > terabytes -> "${toDouble()}${if (long) " terabytes" else "TB"}"
+    this > gigabytes -> "${toDouble()}${if (long) " gigabytes" else "GB"}"
+    this > megabytes -> "${toDouble()}${if (long) " megabytes" else "MB"}"
+    this > kilobytes -> "${toDouble()}${if (long) " kilobytes" else "KB"}"
     else -> "${toDouble()}${if (long) " bytes" else "B"}"
 }
 
