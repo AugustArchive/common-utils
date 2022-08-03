@@ -27,5 +27,5 @@ plugins {
 }
 
 dependencies {
-    api("org.jetbrains.exposed:exposed-core:0.39.1")
+    api("org.jetbrains.exposed:exposed-core:0.39.2")
 }
