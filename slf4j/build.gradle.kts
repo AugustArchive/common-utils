@@ -27,5 +27,5 @@ plugins {
 }
 
 dependencies {
-    api("org.slf4j:slf4j-api:1.7.36")
+    api("org.slf4j:slf4j-api:2.0.0")
 }
