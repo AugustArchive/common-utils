@@ -27,5 +27,5 @@ plugins {
 }
 
 dependencies {
-    api("dev.kord:kord-core:0.8.0-M15")
+    api("dev.kord:kord-core:0.8.0-M16")
 }
