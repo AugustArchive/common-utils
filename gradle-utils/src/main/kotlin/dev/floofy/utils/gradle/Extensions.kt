@@ -42,7 +42,7 @@ import java.net.URI
  * }
  * ```
  */
-infix fun <T> Property<T>.by(value: T) {
+infix fun <T> Property<in T>.by(value: T) {
     set(value)
 }
 
@@ -90,6 +90,9 @@ fun DependencyHandler.floofy(
  * @param version The version of the module to import from.
  * @param type The dependency type, can be `implementation` or `api`.
  */
+@Deprecated("The \"nino\" dependency handler will be removed in a 2.4 release.", level = DeprecationLevel.ERROR,
+    replaceWith = ReplaceWith("add(type, \"sh.nino.\$group:\$module:\$version\")!!")
+)
 fun DependencyHandler.nino(
     group: String,
     module: String,
@@ -153,6 +156,9 @@ fun KotlinDependencyHandler.floofy(
  * @param version The version of the module to import from.
  * @param type The dependency type, can be `implementation` or `api`.
  */
+@Deprecated("The \"nino\" dependency handler will be removed in a 2.4 release.", level = DeprecationLevel.ERROR,
+    replaceWith = ReplaceWith("add(type, \"sh.nino.\$group:\$module:\$version\")!!")
+)
 fun KotlinDependencyHandler.nino(
     group: String,
     module: String,
@@ -205,9 +211,9 @@ fun RepositoryHandler.noel(snapshots: Boolean = false) {
  * @param snapshots If the repository should be configured to use snapshot releases.
  */
 fun RepositoryHandler.noelware(snapshots: Boolean = false) {
-    val suffix = if (snapshots) "/snapshots" else ""
+    val suffix = if (snapshots) "snapshots" else ""
 
     maven {
-        it.url = URI.create("https://maven.noelware.org$suffix")
+        it.url = URI.create("https://maven.noelware.org/$suffix")
     }
 }

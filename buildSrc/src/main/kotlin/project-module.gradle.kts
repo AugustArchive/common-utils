@@ -21,13 +21,14 @@
  * SOFTWARE.
  */
 
-import dev.floofy.utils.gradle.*
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import dev.floofy.utils.gradle.*
 
 plugins {
     id("com.diffplug.spotless")
     id("org.jetbrains.dokka")
     kotlin("jvm")
+    java
 }
 
 group = "dev.floofy.commons"
@@ -40,15 +41,17 @@ repositories {
 
 dependencies {
     // Kotlin libraries
-    api(kotlin("stdlib", "1.7.10"))
-
-    // kotlinx.coroutines
-    api(platform("org.jetbrains.kotlinx:kotlinx-coroutines-bom:1.6.4"))
-    api("org.jetbrains.kotlinx:kotlinx-coroutines-core")
-    api("org.jetbrains.kotlinx:kotlinx-coroutines-jdk8")
+    implementation(kotlin("stdlib", "1.7.10"))
 }
 
 spotless {
+    java {
+        trimTrailingWhitespace()
+        licenseHeaderFile("${rootProject.projectDir}/assets/HEADING")
+        palantirJavaFormat()
+        endWithNewline()
+    }
+
     kotlin {
         trimTrailingWhitespace()
         licenseHeaderFile("${rootProject.projectDir}/assets/HEADING")
@@ -71,11 +74,20 @@ spotless {
     }
 }
 
+java {
+    sourceCompatibility = JAVA_VERSION
+    targetCompatibility = JAVA_VERSION
+}
+
 tasks {
     withType<KotlinCompile> {
         kotlinOptions.jvmTarget = JAVA_VERSION.toString()
         kotlinOptions.javaParameters = true
         kotlinOptions.freeCompilerArgs += listOf("-opt-in=kotlin.RequiresOptIn")
+    }
+
+    compileJava {
+        options.encoding = "UTF-8"
     }
 
     dokkaHtml {
@@ -86,15 +98,10 @@ tasks {
 
                 sourceLink {
                     localDirectory.set(file("src/main/kotlin"))
-                    remoteUrl.set(uri("https://github.com/auguwu/commons-utils/tree/master/${project.name}/src/main/kotlin").toURL())
+                    remoteUrl.set(uri("https://github.com/auguwu/common-utils/tree/master/${project.name}/src/main/kotlin").toURL())
                     remoteLineSuffix.set("#L")
                 }
             }
         }
     }
-}
-
-java {
-    sourceCompatibility = JAVA_VERSION
-    targetCompatibility = JAVA_VERSION
 }

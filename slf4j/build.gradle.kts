@@ -22,6 +22,7 @@
  */
 
 plugins {
+    `project-test-module`
     `project-publishing`
     `project-module`
 }

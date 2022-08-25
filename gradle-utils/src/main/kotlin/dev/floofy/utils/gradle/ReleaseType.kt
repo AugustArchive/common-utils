@@ -25,34 +25,43 @@
 
 package dev.floofy.utils.gradle
 
+import java.util.*
+
 /**
  * Returns the release type of specific [Version].
  */
-enum class ReleaseType(val suffix: String) {
+open class ReleaseType(val suffix: String) {
     /**
      * Represents a release candidate release, this is when this project
      * is almost through completion of a new release.
      */
-    ReleaseCandidate("rc"),
+    object ReleaseCandidate: ReleaseType("rc")
 
     /**
      * Represents a snapshot release, that this is a pre-beta release and
      * bugs will occur.
      */
-    Snapshot("snapshot"),
+    object Snapshot: ReleaseType("snapshot")
+
+    /**
+     * Represents a "alpha" release, which is still a development build.
+     */
+    object Alpha: ReleaseType("alpha")
 
     /**
      * Represents a beta release, this might have some bugs to work out.
      */
-    Beta("beta"),
+    object Beta: ReleaseType("beta")
 
     /**
-     * Full release! The default release type for a [Version] object.
+     * Default release type for anything.
      */
-    None("");
+    object None: ReleaseType("")
 
-    companion object {
-        fun fromOrNull(suffix: String): ReleaseType? = values().find { it.suffix == suffix }
-        fun from(suffix: String): ReleaseType = fromOrNull(suffix) ?: error("Unknown release type: $suffix")
+    override fun hashCode(): Int = Objects.hash(this)
+    override fun equals(other: Any?): Boolean {
+        if (other !is ReleaseType) return false
+
+        return suffix == other.suffix
     }
 }

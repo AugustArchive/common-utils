@@ -27,6 +27,7 @@ import io.github.z4kn4fein.semver.*
 import io.github.z4kn4fein.semver.constraints.*
 import java.io.File
 import java.io.IOException
+import java.util.*
 import java.util.concurrent.TimeUnit
 import io.github.z4kn4fein.semver.Version as SemVersion
 
@@ -89,5 +90,16 @@ class Version(
         proc.inputStream.bufferedReader().readText()
     } catch (e: IOException) {
         null
+    }
+
+    override fun hashCode(): Int = Objects.hash(major, minor, patch, build, release)
+    override fun equals(other: Any?): Boolean {
+        if (other !is Version) return false
+
+        // build doesn't matter, right?
+        return major == other.major &&
+                minor == other.minor &&
+                patch == other.patch &&
+                release == other.release
     }
 }

@@ -5,12 +5,12 @@ module:exposed
 dev.floofy.utils.exposed
 module:extensions-koin
 dev.floofy.utils.koin
-module:extensions-kord
-dev.floofy.utils.kord
 module:extensions-kotlin
 dev.floofy.utils.kotlin
 dev.floofy.utils.kotlin.threading
 module:gradle-utils
 dev.floofy.utils.gradle
+module:java-utils
+dev.floofy.utils.java
 module:slf4j
 dev.floofy.utils.slf4j

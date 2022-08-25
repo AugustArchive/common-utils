@@ -27,12 +27,12 @@ import dev.floofy.utils.gradle.*
 plugins {
     id("com.diffplug.spotless")
     id("org.jetbrains.dokka")
-    kotlin("jvm")
     `maven-publish`
+    kotlin("jvm")
 }
 
 val DOKKA_OUTPUT = "${rootProject.projectDir}/docs"
-group = "dev.floofy"
+group = "dev.floofy.commons"
 version = VERSION
 
 repositories {
@@ -42,7 +42,7 @@ repositories {
 
 tasks {
     wrapper {
-        version = "7.5-rc-4"
+        version = "7.5.1"
         distributionType = ALL
     }
 

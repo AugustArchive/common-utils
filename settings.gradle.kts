@@ -31,9 +31,9 @@ include(
     ":bom",
     ":exposed",
     ":extensions-koin",
-    ":extensions-kord",
     ":extensions-kotlin",
     ":gradle-utils",
+    ":java-utils",
     ":slf4j"
 )
 

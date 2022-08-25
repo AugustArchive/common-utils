@@ -25,15 +25,25 @@
 
 package dev.floofy.utils.kotlin
 
+import java.util.concurrent.TimeUnit
+
 /**
  * Format this [Long] into a readable byte format.
  */
-fun Long.sizeToStr(long: Boolean = false): String = when {
-    this > terabytes -> "${toDouble()}${if (long) " terabytes" else "TB"}"
-    this > gigabytes -> "${toDouble()}${if (long) " gigabytes" else "GB"}"
-    this > megabytes -> "${toDouble()}${if (long) " megabytes" else "MB"}"
-    this > kilobytes -> "${toDouble()}${if (long) " kilobytes" else "KB"}"
-    else -> "${toDouble()}${if (long) " bytes" else "B"}"
+fun Long.sizeToStr(long: Boolean = false): String {
+    val kilo = this / 1024L
+    val mega = kilo / 1024L
+    val giga = mega / 1024L
+    val tera = giga / 1024L
+
+    return when {
+        this < 1024 -> "$this${if (long) " bytes" else "B"}"
+        kilo < 1024 -> "$kilo${if (long) " kilobytes" else "KiB"}"
+        mega < 1024 -> "$mega${if (long) " megabytes" else "MiB"}"
+        giga < 1024 -> "$giga${if (long) " gigabytes" else "GiB"}"
+        tera < 1024 -> "$tera${if (long) " terabytes" else "TiB"}"
+        else -> error("Unknown value [$this]")
+    }
 }
 
 /**
@@ -85,4 +95,16 @@ fun Long.humanize(long: Boolean = false, includeMs: Boolean = false): String {
     if (includeMs && this < 1000) str.append(if (long) "$this millisecond${if (this == 1L) "" else "s"}" else "${this}ms")
 
     return str.toString()
+}
+
+/**
+ * Returns the humanized time of a nanosecond-precision time.
+ */
+fun Long.doFormatTime(): String {
+    if (this == 0L) return "<uninit>"
+    if (this < 1000) return "${this}ns"
+    if (this < 1000000) return "${this}µs"
+
+    val ms = TimeUnit.MILLISECONDS.convert(this, TimeUnit.NANOSECONDS)
+    return ms.humanize(long = false, includeMs = true)
 }

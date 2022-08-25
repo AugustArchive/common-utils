@@ -22,6 +22,7 @@
  */
 
 plugins {
+    `project-test-module`
     `project-publishing`
     `project-module`
 }
@@ -29,5 +30,5 @@ plugins {
 dependencies {
     implementation(kotlin("gradle-plugin-api", version = "1.7.10"))
     api("io.github.z4kn4fein:semver:1.3.3")
-    api(gradleApi())
+    implementation(gradleApi())
 }
