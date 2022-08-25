@@ -90,7 +90,9 @@ fun DependencyHandler.floofy(
  * @param version The version of the module to import from.
  * @param type The dependency type, can be `implementation` or `api`.
  */
-@Deprecated("The \"nino\" dependency handler will be removed in a 2.4 release.", level = DeprecationLevel.ERROR,
+@Deprecated(
+    "The \"nino\" dependency handler will be removed in a 2.4 release.",
+    level = DeprecationLevel.ERROR,
     replaceWith = ReplaceWith("add(type, \"sh.nino.\$group:\$module:\$version\")!!")
 )
 fun DependencyHandler.nino(
@@ -156,7 +158,9 @@ fun KotlinDependencyHandler.floofy(
  * @param version The version of the module to import from.
  * @param type The dependency type, can be `implementation` or `api`.
  */
-@Deprecated("The \"nino\" dependency handler will be removed in a 2.4 release.", level = DeprecationLevel.ERROR,
+@Deprecated(
+    "The \"nino\" dependency handler will be removed in a 2.4 release.",
+    level = DeprecationLevel.ERROR,
     replaceWith = ReplaceWith("add(type, \"sh.nino.\$group:\$module:\$version\")!!")
 )
 fun KotlinDependencyHandler.nino(

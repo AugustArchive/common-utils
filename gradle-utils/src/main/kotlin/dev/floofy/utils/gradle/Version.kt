@@ -98,8 +98,8 @@ class Version(
 
         // build doesn't matter, right?
         return major == other.major &&
-                minor == other.minor &&
-                patch == other.patch &&
-                release == other.release
+            minor == other.minor &&
+            patch == other.patch &&
+            release == other.release
     }
 }
