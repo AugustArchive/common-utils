@@ -5,6 +5,6 @@ Remove-Item -Recurse -Force docs
 .\gradlew dokkaHtmlMultiModule
 Remove-item docs/styles/logo-styles.css
 Copy-Item assets/logo-styles.css docs/styles/logo-styles.css
-echo "commons.floof.gay" >> docs/CNAME
+echo "commons.floofy.dev" >> docs/CNAME
 
 Write-Output "[commons] done!"
