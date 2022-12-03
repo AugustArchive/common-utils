@@ -27,10 +27,10 @@ import kotlin.properties.ReadOnlyProperty
 import kotlin.reflect.KProperty
 
 /**
- * Delegate property to handle a [SetOnceGetValue] object.
+ * Delegate property to handle a [SetOnce] object.
  */
-fun <T: Any> setOnceGetValue(): ReadOnlyProperty<Any?, SetOnceGetValue<T>> = object: ReadOnlyProperty<Any?, SetOnceGetValue<T>> {
-    private val setOnceGetValue = SetOnceGetValue<T>()
-    override fun getValue(thisRef: Any?, property: KProperty<*>): SetOnceGetValue<T> =
+fun <T: Any> setOnceGetValue(): ReadOnlyProperty<Any?, SetOnce<T>> = object: ReadOnlyProperty<Any?, SetOnce<T>> {
+    private val setOnceGetValue = SetOnce<T>()
+    override fun getValue(thisRef: Any?, property: KProperty<*>): SetOnce<T> =
         setOnceGetValue
 }

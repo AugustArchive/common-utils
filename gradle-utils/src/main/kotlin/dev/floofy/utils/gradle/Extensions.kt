@@ -51,10 +51,10 @@ infix fun <T> Property<in T>.by(value: T) {
  * if you rely on **Property<Directory>** and such.
  *
  * ```kotlin
- * someDirectoryProp by { dir("./some/dir") }
+ * someDirectoryProp byLazy { dir("./some/dir") }
  * ```
  */
-infix fun <T> Property<T>.byLazy(lazyValue: Property<T>.() -> Unit) {
+infix fun <T> Property<in T>.byLazy(lazyValue: Property<in T>.() -> Unit) {
     lazyValue()
 }
 
@@ -74,33 +74,9 @@ infix fun <T> Property<T>.byLazy(lazyValue: Property<T>.() -> Unit) {
 fun DependencyHandler.floofy(
     group: String,
     module: String,
-    version: String,
+    version: String = "",
     type: String = "implementation"
-): Dependency = add(type, "dev.floofy.$group:$module:$version")!!
-
-/**
- * Adds a dependency to the package that is imported from Noel's Maven repository
- * (located at `maven.floofy.dev/repo/[releases|snapshots]`).
- *
- * The modules that can be imported with this function are:
- * - [Towa](https://nino.sh/docs/libraries/towa)
- *
- * @param group The module group to import from.
- * @param module The module name to import from.
- * @param version The version of the module to import from.
- * @param type The dependency type, can be `implementation` or `api`.
- */
-@Deprecated(
-    "The \"nino\" dependency handler will be removed in a 2.4 release.",
-    level = DeprecationLevel.ERROR,
-    replaceWith = ReplaceWith("add(type, \"sh.nino.\$group:\$module:\$version\")!!")
-)
-fun DependencyHandler.nino(
-    group: String,
-    module: String,
-    version: String,
-    type: String = "implementation"
-): Dependency = add(type, "sh.nino.$group:$module:$version")!!
+): Dependency = add(type, "dev.floofy.$group:$module${if (version.isNotEmpty()) ":$version" else ""}")!!
 
 /**
  * Adds a dependency to the package that is imported from Noelware's Maven repository
@@ -120,7 +96,7 @@ fun DependencyHandler.noelware(
     module: String,
     version: String,
     type: String = "implementation"
-): Dependency = add(type, "org.noelware.$group:$module:$version")!!
+): Dependency = add(type, "org.noelware.$group:$module${if (version.isNotEmpty()) ":$version" else ""}")!!
 
 /**
  * Adds a dependency to the package that is imported from Noel's Maven repository
@@ -141,36 +117,8 @@ fun KotlinDependencyHandler.floofy(
     version: String,
     type: String = "implementation"
 ): Dependency = when (type) {
-    "implementation" -> implementation("dev.floofy.$group:$module:$version")!!
-    "api" -> api("dev.floofy.$group:$module:$version")!!
-    else -> error("Unknown dependency type: $type")
-}
-
-/**
- * Adds a dependency to the package that is imported from Noel's Maven repository
- * (located at `maven.floofy.dev/repo/[releases|snapshots]`).
- *
- * The modules that can be imported with this function are:
- * - [Towa](https://nino.sh/docs/libraries/towa)
- *
- * @param group The module group to import from.
- * @param module The module name to import from.
- * @param version The version of the module to import from.
- * @param type The dependency type, can be `implementation` or `api`.
- */
-@Deprecated(
-    "The \"nino\" dependency handler will be removed in a 2.4 release.",
-    level = DeprecationLevel.ERROR,
-    replaceWith = ReplaceWith("add(type, \"sh.nino.\$group:\$module:\$version\")!!")
-)
-fun KotlinDependencyHandler.nino(
-    group: String,
-    module: String,
-    version: String,
-    type: String = "implementation"
-): Dependency = when (type) {
-    "implementation" -> implementation("sh.nino.$group:$module:$version")!!
-    "api" -> api("sh.nino.$group:$module:$version")!!
+    "implementation" -> implementation("dev.floofy.$group:${if (version.isNotEmpty()) ":$version" else ""}")!!
+    "api" -> api("dev.floofy.$group:${if (version.isNotEmpty()) ":$version" else ""}")!!
     else -> error("Unknown dependency type: $type")
 }
 
@@ -193,8 +141,8 @@ fun KotlinDependencyHandler.noelware(
     version: String,
     type: String = "implementation"
 ): Dependency = when (type) {
-    "implementation" -> implementation("org.noelware.$group:$module:$version")!!
-    "api" -> api("org.noelware.$group:$module:$version")!!
+    "implementation" -> implementation("org.noelware.$group:${if (version.isNotEmpty()) ":$version" else ""}")!!
+    "api" -> api("org.noelware.$group:${if (version.isNotEmpty()) ":$version" else ""}")!!
     else -> error("Unknown dependency type: $type")
 }
 

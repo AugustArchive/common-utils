@@ -25,13 +25,13 @@ package dev.floofy.utils.java.tests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import dev.floofy.utils.java.SetOnceGetValue;
+import dev.floofy.utils.java.SetOnce;
 import org.junit.Test;
 
-public class SetOnceGetValueTests {
+public class SetOnceTests {
     @Test
     public void test_valueByDefaultIsNull() {
-        var setter = new SetOnceGetValue<String>();
+        var setter = new SetOnce<String>();
 
         assertNull(setter.getValueOrNull());
         assertThrows(IllegalStateException.class, setter::getValue);
@@ -39,7 +39,7 @@ public class SetOnceGetValueTests {
 
     @Test
     public void test_setValue() {
-        var setter = new SetOnceGetValue<String>();
+        var setter = new SetOnce<String>();
         assertFalse(setter.wasSet());
 
         setter.setValue("owo da uwu");

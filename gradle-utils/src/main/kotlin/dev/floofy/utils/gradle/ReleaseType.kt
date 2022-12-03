@@ -44,7 +44,7 @@ open class ReleaseType(val suffix: String) {
     object Snapshot: ReleaseType("snapshot")
 
     /**
-     * Represents a "alpha" release, which is still a development build.
+     * Represents an alpha release, which is still a development build.
      */
     object Alpha: ReleaseType("alpha")
 
@@ -58,7 +58,7 @@ open class ReleaseType(val suffix: String) {
      */
     object None: ReleaseType("")
 
-    override fun hashCode(): Int = Objects.hash(this)
+    override fun hashCode(): Int = Objects.hash(suffix)
     override fun equals(other: Any?): Boolean {
         if (other !is ReleaseType) return false
 

@@ -35,7 +35,7 @@ import org.jetbrains.annotations.Nullable;
  * @since 24.08.22
  * @param <T> The resolvent type.
  */
-public class SetOnceGetValue<T> {
+public class SetOnce<T> {
     private final AtomicReference<T> ref = new AtomicReference<>();
 
     /**
@@ -85,7 +85,7 @@ public class SetOnceGetValue<T> {
     @Override
     public boolean equals(Object that) {
         if (that == null) return false;
-        if (!(that instanceof SetOnceGetValue<?> setter)) return false;
+        if (!(that instanceof SetOnce<?> setter)) return false;
 
         if (!setter.wasSet()) return false;
         return getValue().equals(setter.getValue());
