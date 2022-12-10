@@ -41,7 +41,7 @@ repositories {
 
 dependencies {
     // Kotlin libraries
-    implementation(kotlin("stdlib", "1.7.10"))
+    implementation(kotlin("stdlib", "1.7.22"))
 }
 
 spotless {

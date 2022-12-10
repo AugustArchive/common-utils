@@ -28,7 +28,7 @@ plugins {
 }
 
 dependencies {
-    implementation(kotlin("gradle-plugin-api", version = "1.7.10"))
+    implementation(kotlin("gradle-plugin-api", version = "1.7.22"))
     api("io.github.z4kn4fein:semver:1.4.1")
     implementation(gradleApi())
 }
