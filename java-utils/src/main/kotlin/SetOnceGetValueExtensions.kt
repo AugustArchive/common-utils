@@ -23,7 +23,6 @@
 
 package dev.floofy.utils.java
 
-import kotlin.properties.ReadOnlyProperty
 import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.KProperty
 

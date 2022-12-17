@@ -58,7 +58,7 @@ public class Version(
      * @param release The release type to use for the finalized result. Defaults to [ReleaseType.None].
      */
     public constructor(major: Int, minor: Int, patch: Int, build: Int = 0, release: ReleaseType = ReleaseType.None):
-            this(major, minor, patch, build, release, false)
+        this(major, minor, patch, build, release, false)
 
     /**
      * Represents a simple version class to use for versioning.
@@ -69,7 +69,7 @@ public class Version(
      * @param showPatchNumber If the patch number should be shown or not if [patch] is 0
      */
     public constructor(major: Int, minor: Int, patch: Int, release: ReleaseType = ReleaseType.None, showPatchNumber: Boolean = false):
-            this(major, minor, patch, 0, release, showPatchNumber)
+        this(major, minor, patch, 0, release, showPatchNumber)
 
     /**
      * Represents a simple version class to use for versioning.
@@ -79,7 +79,7 @@ public class Version(
      * @param release The release type to use for the finalized result. Defaults to [ReleaseType.None].
      */
     public constructor(major: Int, minor: Int, patch: Int, release: ReleaseType = ReleaseType.None):
-            this(major, minor, patch, 0, release)
+        this(major, minor, patch, 0, release)
 
     /**
      * Returns the commit sha if the project is in a Git repository. Returns `null`
