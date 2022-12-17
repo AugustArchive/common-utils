@@ -40,7 +40,7 @@
             </a>
     </div>
     <div>
-2.3.0    </div>
+2.4.0    </div>
     <div class="pull-right d-flex">
         <button id="theme-toggle-button"><span id="theme-toggle"></span></button>
         <div id="searchBar"></div>
@@ -62,7 +62,15 @@
       </blockquote>
       <p class="paragraph"><strong>commons-utils</strong> is a Java and Kotlin library for handling utilities that I use in my projects.</p>
       <h2 class=""> Utilities</h2>
-      <h3 class=""> #</h3>
+      <h3 class=""> <a href="https://commons.floofy.dev/java-utils/index.html">commons-java-utils</a></h3>
+      <p class="paragraph"><strong>java-utils</strong> adds some additional utilities for Java-related programming.</p>
+      <h4 class=""> <a href="https://commons.floofy.dev/java-utils/dev.floofy.utils.java/-set-once/index.html">SetOnce<T></a></h4>
+      <p class="paragraph">The <strong>SetOnce</strong> class lets an object be initialized once and can't be ever set again. It's useful if you wish to have values in your Java classes to be initialized only once and never again when your application is running.</p>
+      <div class="sample-container">
+        <pre><code class="block lang-java" theme="idea">private static final SetOnce&lt;String&gt; someString = new SetOnce&lt;&gt;();<br><br>someString.getValue();        // =&gt; throws IllegalStateException<br>someString.getValueOrNull();  // =&gt; `null`<br>someString.wasSet();          // =&gt; false<br>someString.setValue(&quot;hello&quot;); // =&gt; void<br>someString.getValue();        // =&gt; &quot;hello&quot;<br>someString.getValueOrNull();  // =&gt; &quot;hello&quot;<br>someString.wasSet();          // =&gt; true<br>someString.setValue(&quot;world&quot;); // =&gt; void<br>someString.getValue();        // =&gt; &quot;hello&quot;</code></pre>
+<span class="top-right-position"><span class="copy-icon"></span>
+          <div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div>
+        </span></div>
       <h3 class=""> #</h3>
       <h3 class=""> #</h3>
       <h3 class=""> #</h3>
@@ -72,13 +80,13 @@
       <h3 class=""> Gradle</h3>
       <h4 class=""> Kotlin DSL</h4>
       <div class="sample-container">
-        <pre><code class="block lang-kotlin" theme="idea">repositories {<br>    maven {<br>        url = uri(&quot;https://maven.floofy.dev/repo/releases&quot;)<br>    }<br>}<br><br>dependencies {<br>    implementation(&quot;dev.floofy.commons:commons-&lt;package&gt;:&lt;VERSION&gt;&quot;)<br>}</code></pre>
+        <pre><code class="block lang-kotlin" theme="idea">repositories {<br>    maven {<br>        url = uri(&quot;https://maven.floofy.dev/repo/releases&quot;)<br>    }<br>}<br><br>dependencies {<br>    implementation(&quot;dev.floofy.commons:&lt;package&gt;:&lt;VERSION&gt;&quot;)<br>}</code></pre>
 <span class="top-right-position"><span class="copy-icon"></span>
           <div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div>
         </span></div>
       <h4 class=""> Groovy DSL</h4>
       <div class="sample-container">
-        <pre><code class="block lang-groovy" theme="idea">repositories {<br>    maven {<br>        url &quot;https://maven.floofy.dev/repo/releases&quot;<br>    }<br>}<br><br>dependencies {<br>    implementation &quot;dev.floofy.commons:utils-&lt;package&gt;:&lt;VERSION&gt;&quot;<br>}</code></pre>
+        <pre><code class="block lang-groovy" theme="idea">repositories {<br>    maven {<br>        url &quot;https://maven.floofy.dev/repo/releases&quot;<br>    }<br>}<br><br>dependencies {<br>    implementation &quot;dev.floofy.commons:&lt;package&gt;:&lt;VERSION&gt;&quot;<br>}</code></pre>
 <span class="top-right-position"><span class="copy-icon"></span>
           <div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div>
         </span></div>
@@ -89,7 +97,7 @@
           <div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div>
         </span></div>
       <div class="sample-container">
-        <pre><code class="block lang-xml" theme="idea">&lt;dependencies&gt;<br>    &lt;dependency&gt;<br>        &lt;groupId&gt;dev.floofy.commons&lt;/groupId&gt;<br>        &lt;artifactId&gt;commons-{{PACKAGE}}&lt;/artifactId&gt;<br>        &lt;version&gt;{{VERSION}}&lt;/version&gt;<br>        &lt;type&gt;pom&lt;/type&gt;<br>    &lt;/dependency&gt;<br>&lt;/dependencies&gt;</code></pre>
+        <pre><code class="block lang-xml" theme="idea">&lt;dependencies&gt;<br>    &lt;dependency&gt;<br>        &lt;groupId&gt;dev.floofy.commons&lt;/groupId&gt;<br>        &lt;artifactId&gt;{{PACKAGE}}&lt;/artifactId&gt;<br>        &lt;version&gt;{{VERSION}}&lt;/version&gt;<br>        &lt;type&gt;pom&lt;/type&gt;<br>    &lt;/dependency&gt;<br>&lt;/dependencies&gt;</code></pre>
 <span class="top-right-position"><span class="copy-icon"></span>
           <div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div>
         </span></div>
