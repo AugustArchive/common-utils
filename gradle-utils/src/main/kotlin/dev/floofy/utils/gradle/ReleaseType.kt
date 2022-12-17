@@ -30,33 +30,33 @@ import java.util.*
 /**
  * Returns the release type of specific [Version].
  */
-open class ReleaseType(val suffix: String) {
+public open class ReleaseType(public val suffix: String) {
     /**
      * Represents a release candidate release, this is when this project
      * is almost through completion of a new release.
      */
-    object ReleaseCandidate: ReleaseType("rc")
+    public object ReleaseCandidate: ReleaseType("rc")
 
     /**
      * Represents a snapshot release, that this is a pre-beta release and
      * bugs will occur.
      */
-    object Snapshot: ReleaseType("snapshot")
+    public object Snapshot: ReleaseType("snapshot")
 
     /**
      * Represents an alpha release, which is still a development build.
      */
-    object Alpha: ReleaseType("alpha")
+    public object Alpha: ReleaseType("alpha")
 
     /**
      * Represents a beta release, this might have some bugs to work out.
      */
-    object Beta: ReleaseType("beta")
+    public object Beta: ReleaseType("beta")
 
     /**
      * Default release type for anything.
      */
-    object None: ReleaseType("")
+    public object None: ReleaseType("")
 
     override fun hashCode(): Int = Objects.hash(suffix)
     override fun equals(other: Any?): Boolean {

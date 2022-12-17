@@ -31,29 +31,29 @@ import kotlin.properties.ReadOnlyProperty
 /**
  * Readonly property to quickly get a reference of [T].
  */
-inline fun <reified T> inject(): ReadOnlyProperty<Any?, T> = ReadOnlyProperty { _, _ ->
+public inline fun <reified T> inject(): ReadOnlyProperty<Any?, T> = ReadOnlyProperty { _, _ ->
     GlobalContext.retrieve()
 }
 
 /**
  * Readonly property to get a reference of [T] or null if it wasn't found in the Koin application.
  */
-inline fun <reified T> injectOrNull(): ReadOnlyProperty<Any?, T?> = ReadOnlyProperty { _, _ ->
+public inline fun <reified T> injectOrNull(): ReadOnlyProperty<Any?, T?> = ReadOnlyProperty { _, _ ->
     GlobalContext.retrieveOrNull()
 }
 
 /**
  * Simple method to return an object as [T] from the current Koin application
  */
-inline fun <reified T> GlobalContext.retrieve(): T = get().get()
+public inline fun <reified T> GlobalContext.retrieve(): T = get().get()
 
 /**
  * Simple method to return an object as [T] from the current Koin application or
  * `null` if it was never registered.
  */
-inline fun <reified T> GlobalContext.retrieveOrNull(): T? = get().getOrNull()
+public inline fun <reified T> GlobalContext.retrieveOrNull(): T? = get().getOrNull()
 
 /**
  * Returns a list of objects as [T] from the current Koin application.
  */
-inline fun <reified T> GlobalContext.retrieveAll(): List<T> = get().getAll()
+public inline fun <reified T> GlobalContext.retrieveAll(): List<T> = get().getAll()

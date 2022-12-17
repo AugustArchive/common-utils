@@ -30,7 +30,7 @@ import java.util.concurrent.TimeUnit
 /**
  * Format this [Long] into a readable byte format.
  */
-fun Long.sizeToStr(long: Boolean = false): String {
+public fun Long.sizeToStr(long: Boolean = false): String {
     val kilo = this / 1024L
     val mega = kilo / 1024L
     val giga = mega / 1024L
@@ -49,32 +49,32 @@ fun Long.sizeToStr(long: Boolean = false): String {
 /**
  * Converts this [Long] from bytes -> terabytes.
  */
-val Long.terabytes: Long
+public val Long.terabytes: Long
     get() = this * 1099511627776
 
 /**
  * Converts this [Long] from bytes -> gigabytes.
  */
-val Long.gigabytes: Long
+public val Long.gigabytes: Long
     get() = this * 1073741824
 
 /**
  * Converts this [Long] from bytes -> megabytes.
  */
-val Long.megabytes: Long
+public val Long.megabytes: Long
     get() = this * 1048576
 
 /**
  * Converts this [Long] from bytes -> kilobytes.
  */
-val Long.kilobytes: Long
+public val Long.kilobytes: Long
     get() = this * 1024
 
 /**
  * Returns the humanized time for a [java.lang.Long] instance
  * @credit https://github.com/DV8FromTheWorld/Yui/blob/master/src/main/java/net/dv8tion/discord/commands/UptimeCommand.java#L34
  */
-fun Long.humanize(long: Boolean = false, includeMs: Boolean = false): String {
+public fun Long.humanize(long: Boolean = false, includeMs: Boolean = false): String {
     val months = this / 2592000000L % 12
     val weeks = this / 604800000L % 7
     val days = this / 86400000L % 30
@@ -100,7 +100,7 @@ fun Long.humanize(long: Boolean = false, includeMs: Boolean = false): String {
 /**
  * Returns the humanized time of a nanosecond-precision time.
  */
-fun Long.doFormatTime(): String {
+public fun Long.doFormatTime(): String {
     if (this == 0L) return "<uninit>"
     if (this < 1000) return "${this}ns"
     if (this < 1000000) return "${this}µs"

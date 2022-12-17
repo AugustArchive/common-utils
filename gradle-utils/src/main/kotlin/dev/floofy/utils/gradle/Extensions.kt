@@ -42,7 +42,7 @@ import java.net.URI
  * }
  * ```
  */
-infix fun <T> Property<in T>.by(value: T) {
+public infix fun <T> Property<in T>.by(value: T) {
     set(value)
 }
 
@@ -54,7 +54,7 @@ infix fun <T> Property<in T>.by(value: T) {
  * someDirectoryProp byLazy { dir("./some/dir") }
  * ```
  */
-infix fun <T> Property<in T>.byLazy(lazyValue: Property<in T>.() -> Unit) {
+public infix fun <T> Property<in T>.byLazy(lazyValue: Property<in T>.() -> Unit) {
     lazyValue()
 }
 
@@ -71,7 +71,7 @@ infix fun <T> Property<in T>.byLazy(lazyValue: Property<in T>.() -> Unit) {
  * @param version The version of the module to import from.
  * @param type The dependency type, can be `implementation` or `api`.
  */
-fun DependencyHandler.floofy(
+public fun DependencyHandler.floofy(
     group: String,
     module: String,
     version: String = "",
@@ -91,7 +91,7 @@ fun DependencyHandler.floofy(
  * @param version The version of the module to import from.
  * @param type The dependency type, can be `implementation` or `api`.
  */
-fun DependencyHandler.noelware(
+public fun DependencyHandler.noelware(
     group: String,
     module: String,
     version: String,
@@ -111,38 +111,34 @@ fun DependencyHandler.noelware(
  * @param version The version of the module to import from.
  * @param type The dependency type, can be `implementation` or `api`.
  */
-fun KotlinDependencyHandler.floofy(
+public fun KotlinDependencyHandler.floofy(
     group: String,
     module: String,
     version: String,
     type: String = "implementation"
 ): Dependency = when (type) {
     "implementation" -> implementation("dev.floofy.$group:${if (version.isNotEmpty()) ":$version" else ""}")!!
-    "api" -> api("dev.floofy.$group:${if (version.isNotEmpty()) ":$version" else ""}")!!
+    "api" -> api("dev.floofy.$group:$module:${if (version.isNotEmpty()) ":$version" else ""}")!!
     else -> error("Unknown dependency type: $type")
 }
 
 /**
  * Adds a dependency to the package that is imported from Noelware's Maven repository
- * (located at `maven.noelware.org/[snapshots]`).
- *
- * The modules that can be imported with this function are:
- * - [Remi](https://docs.noelware.org/libraries/kotlin/remi)
- * - [ktor-routing](https://docs.noelware.org/libraries/kotlin/ktor-routing)
+ * (located at `maven.noelware.org`).
  *
  * @param group The module group to import from.
  * @param module The module name to import from.
  * @param version The version of the module to import from.
  * @param type The dependency type, can be `implementation` or `api`.
  */
-fun KotlinDependencyHandler.noelware(
+public fun KotlinDependencyHandler.noelware(
     group: String,
     module: String,
     version: String,
     type: String = "implementation"
 ): Dependency = when (type) {
     "implementation" -> implementation("org.noelware.$group:${if (version.isNotEmpty()) ":$version" else ""}")!!
-    "api" -> api("org.noelware.$group:${if (version.isNotEmpty()) ":$version" else ""}")!!
+    "api" -> api("org.noelware.$group:$module:${if (version.isNotEmpty()) ":$version" else ""}")!!
     else -> error("Unknown dependency type: $type")
 }
 
@@ -150,7 +146,7 @@ fun KotlinDependencyHandler.noelware(
  * Adds Noel's maven repository to the current [repository handler][RepositoryHandler].
  * @param snapshots If the repository should be configured to use snapshot releases.
  */
-fun RepositoryHandler.noel(snapshots: Boolean = false) {
+public fun RepositoryHandler.noel(snapshots: Boolean = false) {
     val suffix = if (snapshots) "snapshots" else "releases"
 
     maven {
@@ -162,7 +158,7 @@ fun RepositoryHandler.noel(snapshots: Boolean = false) {
  * Adds the Noelware Maven repository to the current [repository handler][RepositoryHandler].
  * @param snapshots If the repository should be configured to use snapshot releases.
  */
-fun RepositoryHandler.noelware(snapshots: Boolean = false) {
+public fun RepositoryHandler.noelware(snapshots: Boolean = false) {
     val suffix = if (snapshots) "snapshots" else ""
 
     maven {

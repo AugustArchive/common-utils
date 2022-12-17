@@ -33,7 +33,7 @@ import java.util.concurrent.atomic.AtomicLong
  * @param threadGroup The thread group to use.
  * @return a new [ThreadFactory] object.
  */
-fun createThreadFactory(
+public fun createThreadFactory(
     name: String,
     priority: Int? = null,
     threadGroup: ThreadGroup = Thread.currentThread().threadGroup

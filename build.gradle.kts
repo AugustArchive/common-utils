@@ -31,7 +31,7 @@ plugins {
     kotlin("jvm")
 }
 
-val DOKKA_OUTPUT = "${rootProject.projectDir}/docs"
+val dokkaOutputDir = "${rootProject.projectDir}/docs"
 group = "dev.floofy.commons"
 version = VERSION
 
@@ -46,13 +46,13 @@ tasks {
     }
 
     clean {
-        delete(DOKKA_OUTPUT)
+        delete(dokkaOutputDir)
     }
 
     dokkaHtmlMultiModule.configure {
         dependsOn(clean)
 
         includes.from("README.md")
-        outputDirectory.set(file(DOKKA_OUTPUT))
+        outputDirectory.set(file(dokkaOutputDir))
     }
 }

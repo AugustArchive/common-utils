@@ -39,16 +39,40 @@ import io.github.z4kn4fein.semver.Version as SemVersion
  * @param build The build version, this is only needed if the [ReleaseType] is not `None`.
  * @param release The release type to use for the finalized result. Defaults to [ReleaseType.None].
  */
-class Version(
-    val major: Int,
-    val minor: Int,
-    val patch: Int,
-    val build: Int = 0,
-    val release: ReleaseType = ReleaseType.None
+@Suppress("MemberVisibilityCanBePrivate")
+public class Version(
+    public val major: Int,
+    public val minor: Int,
+    public val patch: Int,
+    public val build: Int = 0,
+    public val release: ReleaseType = ReleaseType.None,
+    private val showPathNumber: Boolean = false
 ) {
+    /**
+     * Returns the commit sha if the project is in a Git repository. Returns `null`
+     * if a [IOException] had occurred.
+     */
+    public val gitCommitHash: String? by lazy {
+        try {
+            val parts = "git rev-parse --short=8 HEAD".split("\\s".toRegex())
+            val proc = ProcessBuilder(*parts.toTypedArray())
+                .directory(File("."))
+                .redirectOutput(ProcessBuilder.Redirect.PIPE)
+                .redirectError(ProcessBuilder.Redirect.PIPE)
+                .start()
+
+            proc.waitFor(60, TimeUnit.SECONDS)
+            proc.inputStream.bufferedReader().readText()
+        } catch (e: IOException) {
+            null
+        }
+    }
+
     override fun toString(): String = buildString {
         append("$major.$minor")
-        if (patch != 0) {
+        if (showPathNumber) {
+            append(".$patch")
+        } else if (patch != 0) {
             append(".$patch")
         }
 
@@ -66,31 +90,20 @@ class Version(
      * @param strict If the parsing should be strict or not.
      * @return A [SemVersion] object.
      */
-    fun toSemVer(strict: Boolean = false): SemVersion = "$this".toVersion(strict)
+    public fun toSemVer(strict: Boolean = false): SemVersion = "$this".toVersion(strict)
 
     /**
      * Checks if the [constraint] is satisfied by this current version object.
      * @param constraint The constraint
      */
-    infix fun satisifiedBy(constraint: Constraint): Boolean = constraint satisfiedBy toSemVer(false)
+    public infix fun satisfiedBy(constraint: Constraint): Boolean = constraint satisfiedBy toSemVer(false)
 
     /**
      * Returns the commit sha if the project is in a Git repository. Returns `null`
      * if a [IOException] had occurred.
      */
-    fun getGitCommit(): String? = try {
-        val parts = "git rev-parse --short=8 HEAD".split("\\s".toRegex())
-        val proc = ProcessBuilder(*parts.toTypedArray())
-            .directory(File("."))
-            .redirectOutput(ProcessBuilder.Redirect.PIPE)
-            .redirectError(ProcessBuilder.Redirect.PIPE)
-            .start()
-
-        proc.waitFor(60, TimeUnit.SECONDS)
-        proc.inputStream.bufferedReader().readText()
-    } catch (e: IOException) {
-        null
-    }
+    @Deprecated("Use the gitCommitHash property instead of this", ReplaceWith("gitCommitHash"))
+    public fun getGitCommit(): String? = gitCommitHash
 
     override fun hashCode(): Int = Objects.hash(major, minor, patch, build, release)
     override fun equals(other: Any?): Boolean {

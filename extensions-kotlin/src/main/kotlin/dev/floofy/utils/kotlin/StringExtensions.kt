@@ -32,7 +32,7 @@ import java.util.*
  * @param textLen The length of the text to concat
  * @return this [String] concat-ed if it was over [textLen].
  */
-fun String.ellipsis(textLen: Int = 1995): String = if (length > textLen) {
+public fun String.ellipsis(textLen: Int = 1995): String = if (length > textLen) {
     "${slice(0..textLen)}..."
 } else {
     this
@@ -41,7 +41,7 @@ fun String.ellipsis(textLen: Int = 1995): String = if (length > textLen) {
 /**
  * Upper cases the first letter of this [String]
  */
-fun String.titleCase(): String {
+public fun String.titleCase(): String {
     if (isNotEmpty()) {
         val first = this[0]
         if (first.isLowerCase()) {

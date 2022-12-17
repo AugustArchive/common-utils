@@ -32,13 +32,13 @@ import kotlin.properties.ReadOnlyProperty
 /**
  * Constructs a logger from Slf4j's [LoggerFactory] as a readonly property.
  */
-inline fun <reified T> logging(): ReadOnlyProperty<Any?, Logger> = ReadOnlyProperty { _, _ ->
+public inline fun <reified T> logging(): ReadOnlyProperty<Any?, Logger> = ReadOnlyProperty { _, _ ->
     LoggerFactory.getLogger(T::class.java)
 }
 
 /**
  * Constructs a logger from Slf4j's [LoggerFactory] as a readonly property.
  */
-fun logging(name: String): ReadOnlyProperty<Any?, Logger> = ReadOnlyProperty { _, _ ->
+public fun logging(name: String): ReadOnlyProperty<Any?, Logger> = ReadOnlyProperty { _, _ ->
     LoggerFactory.getLogger(name)
 }

@@ -37,14 +37,14 @@ import org.jetbrains.exposed.sql.transactions.transaction
  * @param body The body to execute in the transaction.
  */
 @OptIn(DelicateCoroutinesApi::class)
-class AsyncTransaction<T>(
+public class AsyncTransaction<T>(
     private val scope: CoroutineScope = GlobalScope,
     private val body: Transaction.() -> T
 ) {
     /**
      * Executes this transaction and returns the value that is casted to [T].
      */
-    suspend fun execute(): T = CoroutineScope(scope.coroutineContext).future {
+    public suspend fun execute(): T = CoroutineScope(scope.coroutineContext).future {
         transaction {
             body()
         }
@@ -58,5 +58,5 @@ class AsyncTransaction<T>(
  * @return The transaction result as [T].
  */
 @OptIn(DelicateCoroutinesApi::class)
-suspend fun <T> asyncTransaction(scope: CoroutineScope = GlobalScope, block: Transaction.() -> T): T =
+public suspend fun <T> asyncTransaction(scope: CoroutineScope = GlobalScope, block: Transaction.() -> T): T =
     AsyncTransaction(scope, block).execute()
