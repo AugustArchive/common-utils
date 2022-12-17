@@ -40,6 +40,12 @@ public class GradleExtensionsTest {
 
         assertEquals("1.0-alpha.2", first.toString());
         assertEquals("2.1.3-rc.5", second.toString());
+
+        final var third = new Version(1, 0, 6, 5, ReleaseType.Beta.INSTANCE, true);
+        assertEquals("1.0.6-beta.5", third.toString());
+
+        final var fourth = new Version(21, 32, 0, 0, ReleaseType.None.INSTANCE, true);
+        assertEquals("21.32.0", fourth.toString());
     }
 
     @Test

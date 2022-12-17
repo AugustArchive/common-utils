@@ -38,6 +38,7 @@ import io.github.z4kn4fein.semver.Version as SemVersion
  * @param patch The patch version.
  * @param build The build version, this is only needed if the [ReleaseType] is not `None`.
  * @param release The release type to use for the finalized result. Defaults to [ReleaseType.None].
+ * @param showPatchNumber If the patch number should be shown or not if [patch] is 0
  */
 @Suppress("MemberVisibilityCanBePrivate")
 public class Version(
@@ -46,8 +47,40 @@ public class Version(
     public val patch: Int,
     public val build: Int = 0,
     public val release: ReleaseType = ReleaseType.None,
-    private val showPathNumber: Boolean = false
+    private val showPatchNumber: Boolean = false
 ) {
+    /**
+     * Represents a simple version class to use for versioning.
+     * @param major The major version.
+     * @param minor The minor version.
+     * @param patch The patch version.
+     * @param build The build version, this is only needed if the [ReleaseType] is not `None`.
+     * @param release The release type to use for the finalized result. Defaults to [ReleaseType.None].
+     */
+    public constructor(major: Int, minor: Int, patch: Int, build: Int = 0, release: ReleaseType = ReleaseType.None):
+            this(major, minor, patch, build, release, false)
+
+    /**
+     * Represents a simple version class to use for versioning.
+     * @param major The major version.
+     * @param minor The minor version.
+     * @param patch The patch version.
+     * @param release The release type to use for the finalized result. Defaults to [ReleaseType.None].
+     * @param showPatchNumber If the patch number should be shown or not if [patch] is 0
+     */
+    public constructor(major: Int, minor: Int, patch: Int, release: ReleaseType = ReleaseType.None, showPatchNumber: Boolean = false):
+            this(major, minor, patch, 0, release, showPatchNumber)
+
+    /**
+     * Represents a simple version class to use for versioning.
+     * @param major The major version.
+     * @param minor The minor version.
+     * @param patch The patch version.
+     * @param release The release type to use for the finalized result. Defaults to [ReleaseType.None].
+     */
+    public constructor(major: Int, minor: Int, patch: Int, release: ReleaseType = ReleaseType.None):
+            this(major, minor, patch, 0, release)
+
     /**
      * Returns the commit sha if the project is in a Git repository. Returns `null`
      * if a [IOException] had occurred.
@@ -70,9 +103,11 @@ public class Version(
 
     override fun toString(): String = buildString {
         append("$major.$minor")
-        if (showPathNumber) {
+        if (showPatchNumber) {
             append(".$patch")
-        } else if (patch != 0) {
+        }
+
+        if (!showPatchNumber && patch != 0) {
             append(".$patch")
         }
 

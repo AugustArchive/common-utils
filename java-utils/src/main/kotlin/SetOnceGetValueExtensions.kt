@@ -24,13 +24,17 @@
 package dev.floofy.utils.java
 
 import kotlin.properties.ReadOnlyProperty
+import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.KProperty
 
 /**
  * Delegate property to handle a [SetOnce] object.
  */
-fun <T: Any> setOnceGetValue(): ReadOnlyProperty<Any?, SetOnce<T>> = object: ReadOnlyProperty<Any?, SetOnce<T>> {
+public fun <T: Any> setOnceGetValue(): ReadWriteProperty<Any?, T?> = object: ReadWriteProperty<Any?, T?> {
     private val setOnceGetValue = SetOnce<T>()
-    override fun getValue(thisRef: Any?, property: KProperty<*>): SetOnce<T> =
-        setOnceGetValue
+    override fun getValue(thisRef: Any?, property: KProperty<*>): T? = setOnceGetValue.valueOrNull
+    override fun setValue(thisRef: Any?, property: KProperty<*>, value: T?) {
+        if (value == null) throw IllegalStateException("Can't allow null when using `<value> = null`.")
+        setOnceGetValue.value = value
+    }
 }

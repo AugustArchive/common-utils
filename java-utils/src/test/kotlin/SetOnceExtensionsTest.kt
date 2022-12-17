@@ -31,10 +31,10 @@ import org.junit.jupiter.api.Assertions.*
 class SetOnceExtensionsTest {
     @Test
     fun `if setOnceGetValue delegate works`() {
-        val owo: SetOnce<String> by setOnceGetValue()
-        assertNull(owo.valueOrNull)
+        var owo: String? by setOnceGetValue()
+        assertNull(owo)
 
-        owo.value = "true"
-        assertEquals("true", owo.value)
+        owo = "true"
+        assertEquals("true", owo)
     }
 }
