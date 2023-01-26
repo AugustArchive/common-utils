@@ -131,7 +131,7 @@ publishing {
     }
 
     repositories {
-        val url = if (snapshotRelease) "s3://maven.floofy.dev/repo/snapshots" else "s3://maven.floofy.dev/repo/releases"
+        val url = if (snapshotRelease) "s3://august/noel/maven/repo/snapshots" else "s3://august/noel/maven/repo/releases"
         maven(url) {
             credentials(AwsCredentials::class.java) {
                 this.accessKey = publishingProps.getProperty("s3.accessKey") ?: ""
