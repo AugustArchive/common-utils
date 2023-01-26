@@ -25,8 +25,6 @@
 
 package dev.floofy.utils.kotlin
 
-import kotlin.reflect.KClass
-
 /**
  * Calls the [body] function if [T] was not null.
  * @param body The body function to call if [T] was not null.
