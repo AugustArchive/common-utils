@@ -173,6 +173,15 @@ val dokkaJar by tasks.registering(Jar::class) {
     dependsOn(tasks.dokkaHtml)
 }
 
+val javadocJar by tasks.registering(Jar::class) {
+    group = JavaBasePlugin.DOCUMENTATION_GROUP
+    description = "Assemble Java documentation with Javadoc"
+
+    archiveClassifier.set("javadoc")
+    from(tasks.javadoc)
+    dependsOn(tasks.javadoc)
+}
+
 publishing {
     publications {
         create<MavenPublication>("commons") {
@@ -188,7 +197,11 @@ publishing {
             version = VERSION
 
             artifact(sourcesJar.get())
-            artifact(dokkaJar.get())
+            if (project.name != "java-utils") {
+                artifact(dokkaJar.get())
+            } else {
+                artifact(javadocJar.get())
+            }
 
             pom {
                 description by "Common utilities to do things."
