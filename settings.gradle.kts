@@ -1,6 +1,6 @@
 /*
  * 🤹 common-utils: Common Kotlin utilities made for my personal usage.
- * Copyright (c) 2021-2022 Noel <cutie@floofy.dev>
+ * Copyright (c) 2021-2023 Noel <cutie@floofy.dev>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -29,7 +29,6 @@ plugins {
 
 include(
     ":bom",
-    ":exposed",
     ":extensions-koin",
     ":extensions-kotlin",
     ":gradle-utils",
@@ -37,12 +36,11 @@ include(
     ":slf4j"
 )
 
-val buildScanServer = System.getProperty("dev.floofy.commons.build-scan-server", "") ?: ""
+val buildScanServer = System.getProperty("dev.floofy.gradle.build-scan-server", "") ?: ""
 gradleEnterprise {
     buildScan {
         if (buildScanServer.isNotEmpty()) {
             server = buildScanServer
-            isCaptureTaskInputFiles = true
             publishAlways()
         } else {
             termsOfServiceUrl = "https://gradle.com/terms-of-service"

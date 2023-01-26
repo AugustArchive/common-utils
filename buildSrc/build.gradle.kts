@@ -1,6 +1,6 @@
 /*
  * 🤹 common-utils: Common Kotlin utilities made for my personal usage.
- * Copyright (c) 2021-2022 Noel <cutie@floofy.dev>
+ * Copyright (c) 2021-2023 Noel <cutie@floofy.dev>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -36,7 +36,7 @@ repositories {
 }
 
 dependencies {
-    implementation("com.diffplug.spotless:spotless-plugin-gradle:6.12.0")
+    implementation("com.diffplug.spotless:spotless-plugin-gradle:6.13.0")
     implementation("org.jetbrains.dokka:dokka-gradle-plugin:1.7.20")
     implementation(kotlin("gradle-plugin", "1.8.0"))
     implementation(gradleApi())

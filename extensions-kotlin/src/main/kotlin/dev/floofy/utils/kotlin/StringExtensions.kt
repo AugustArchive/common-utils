@@ -1,6 +1,6 @@
 /*
  * 🤹 common-utils: Common Kotlin utilities made for my personal usage.
- * Copyright (c) 2021-2022 Noel <cutie@floofy.dev>
+ * Copyright (c) 2021-2023 Noel <cutie@floofy.dev>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -50,10 +50,10 @@ public fun String.titleCase(): String {
                 if (titleChar != first.uppercaseChar()) {
                     append(titleChar)
                 } else {
-                    append(this@titleCase.substring(0, 1).uppercase(Locale.getDefault()))
+                    append(substring(0, 1).uppercase(Locale.getDefault()))
                 }
 
-                append(this@titleCase.substring(1))
+                append(substring(1))
             }
         }
     }

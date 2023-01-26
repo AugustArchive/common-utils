@@ -1,6 +1,6 @@
 /*
  * 🤹 common-utils: Common Kotlin utilities made for my personal usage.
- * Copyright (c) 2021-2022 Noel <cutie@floofy.dev>
+ * Copyright (c) 2021-2023 Noel <cutie@floofy.dev>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,14 +21,107 @@
  * SOFTWARE.
  */
 
+import org.gradle.api.tasks.testing.logging.TestExceptionFormat
+import org.gradle.api.tasks.testing.logging.TestLogEvent
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import dev.floofy.utils.gradle.*
 import java.io.StringReader
-import java.util.Properties
+import java.util.*
 
 plugins {
+    id("com.diffplug.spotless")
     id("org.jetbrains.dokka")
-    `maven-publish`
     kotlin("jvm")
+    java
+
+    `maven-publish`
+    `java-library`
+}
+
+group = "dev.floofy.commons"
+version = VERSION
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
+dependencies {
+    // Kotlin libraries
+    implementation(kotlin("stdlib"))
+
+    // Test dependencies
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.9.2")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.9.2")
+    testImplementation("org.slf4j:slf4j-simple:2.0.6")
+    testImplementation(kotlin("test"))
+}
+
+kotlin {
+    explicitApi()
+}
+
+spotless {
+    java {
+        trimTrailingWhitespace()
+        licenseHeaderFile("${rootProject.projectDir}/assets/HEADING")
+        palantirJavaFormat()
+        endWithNewline()
+    }
+
+    kotlin {
+        trimTrailingWhitespace()
+        licenseHeaderFile("${rootProject.projectDir}/assets/HEADING")
+        endWithNewline()
+        ktlint().apply {
+            setUseExperimental(true)
+            setEditorConfigPath(file("${rootProject.projectDir}/.editorconfig"))
+        }
+    }
+}
+
+java {
+    sourceCompatibility = JAVA_VERSION
+    targetCompatibility = JAVA_VERSION
+}
+
+tasks {
+    withType<KotlinCompile> {
+        kotlinOptions.jvmTarget = JAVA_VERSION.toString()
+        kotlinOptions.javaParameters = true
+        kotlinOptions.freeCompilerArgs += listOf("-opt-in=kotlin.RequiresOptIn")
+    }
+
+    compileJava {
+        options.encoding = "UTF-8"
+    }
+
+    dokkaHtml {
+        dokkaSourceSets {
+            configureEach {
+                platform.set(org.jetbrains.dokka.Platform.jvm)
+                jdkVersion.set(17)
+
+                sourceLink {
+                    localDirectory.set(file("src/main/kotlin"))
+                    remoteUrl.set(uri("https://github.com/auguwu/common-utils/tree/master/${project.name}/src/main/kotlin").toURL())
+                    remoteLineSuffix.set("#L")
+                }
+            }
+        }
+    }
+
+    withType<Test>().configureEach {
+        outputs.upToDateWhen { false }
+        maxParallelForks = Runtime.getRuntime().availableProcessors()
+        failFast = true // kill gradle if a test fails
+
+        testLogging {
+            events.addAll(listOf(TestLogEvent.PASSED, TestLogEvent.FAILED, TestLogEvent.SKIPPED))
+            showStandardStreams = true
+            exceptionFormat = TestExceptionFormat.FULL
+        }
+    }
 }
 
 infix fun <T> Property<T>.by(value: T) {

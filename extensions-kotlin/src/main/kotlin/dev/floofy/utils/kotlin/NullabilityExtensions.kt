@@ -40,32 +40,3 @@ public fun <T, U> T?.ifNotNull(body: T.() -> U): U? = if (this != null) body() e
  * @return The result from [body] as [U].
  */
 public fun <T, U> T?.ifNull(body: () -> U): U? = if (this == null) body() else null
-
-/**
- * Tries a function method on [T], returns `null` if the exception was the instance
- * of [E].
- *
- * @param catchOn The exception to catch on.
- * @param body The body function to call.
- * @return The result from the [body] function as [U].
- */
-@Deprecated("Will be removed in v2.5")
-public fun <T, U, E: Throwable> T.tryCatch(catchOn: KClass<E>, body: T.() -> U): U? = try {
-    body()
-} catch (e: Throwable) {
-    if (catchOn.isInstance(e)) {
-        null
-    } else {
-        throw e
-    }
-}
-
-/**
- * Tries a function method from [T], returns `null` if the exception was an instance of [E],
- * if not, the exception will just throw on its own.
- *
- * @param body The body function to call.
- * @return The result from the [body] function as [U].
- */
-@Deprecated("Will be removed in v2.5", ReplaceWith("tryCatch(E::class, body)"))
-public inline fun <reified E: Throwable, T, U> T.tryCatch(noinline body: T.() -> U): U? = tryCatch(E::class, body)

@@ -1,5 +1,5 @@
 # 🤹 common-utils: Common Kotlin utilities made for my personal usage.
-# Copyright (c) 2021-2022 Noel <cutie@floofy.dev>
+# Copyright (c) 2021-2023 Noel <cutie@floofy.dev>
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -29,26 +29,34 @@ on:
       - 'issue/gh-**'
       - master
     paths-ignore:
-      - 'assets/'
-      - .dockerignore
-      - gradle.properties
+      - '.husky/**'
+      - '.vscode/**'
+      - 'assets/**'
+      - 'locales/**'
+      - 'docker/**'
+      - '.dockerignore'
+      - '.eslintignore'
+      - '.gitignore'
       - '**.md'
-      - LICENSE
-      - renovate.json
+      - 'LICENSE'
+      - 'renovate.json'
   push:
     branches:
       - 'feature/**'
       - 'issue/gh-**'
       - master
     paths-ignore:
-      - '.github/**'
-      - 'assets/'
-      - .dockerignore
-      - gradle.properties
+      - '.husky/**'
+      - '.vscode/**'
+      - 'assets/**'
+      - 'locales/**'
+      - 'docker/**'
+      - '.dockerignore'
+      - '.eslintignore'
+      - '.gitignore'
       - '**.md'
-      - LICENSE
-      - renovate.json
-      - settings.gradle.kts
+      - 'LICENSE'
+      - 'renovate.json'
 jobs:
   ktlint:
     name: Linting & Unit Testing
