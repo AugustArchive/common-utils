@@ -1,8 +1,6 @@
 $dokka.format:html-v1
 $dokka.linkExtension:html
 
-module:exposed
-dev.floofy.utils.exposed
 module:extensions-koin
 dev.floofy.utils.koin
 module:extensions-kotlin
