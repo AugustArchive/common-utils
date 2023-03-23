@@ -22,14 +22,15 @@
 root = true
 
 [*]
+indent_size = 4
+end_of_line = lf
 charset = utf-8
 indent_style = space
 insert_final_newline = true
 trim_trailing_whitespace = true
+max_line_length = 120
 
 [*.{kt,kts}]
-indent_size = 4
-end_of_line = lf
 ij_kotlin_allow_trailing_comma = false
 ktlint_standard = enabled
 ktlint_experimental = enabled
@@ -38,6 +39,7 @@ ktlint_standard_no-unused-imports = enabled
 ktlint_standard_no-unit-return = enabled
 ktlint_function_signature_body_expression_wrapping = multiline
 ktlint_standard_no-consecutive-blank-lines = enabled
+ktlint_standard_no-unused-imports = enabled
 ktlint_experimental_fun-keyword-spacing = enabled
 ktlint_experimental_unnecessary-parentheses-before-trailing-lambda = enabled
 ktlint_experimental_property-naming = disabled
@@ -46,6 +48,5 @@ ktlint_standard_annotation-spacing = disabled
 ktlint_standard_filename = disabled
 ktlint_standard_no-wildcard-imports = disabled
 ktlint_standard_argument-list-wrapping = disabled
-
-[*.{json,yaml,yml,md}]
-indent_size = 2
+ktlint_standard_import-ordering = disabled
+max_line_length = off

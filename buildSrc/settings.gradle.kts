@@ -21,35 +21,22 @@
  * SOFTWARE.
  */
 
-package dev.floofy.utils.java.tests;
+import org.gradle.toolchains.foojay.FoojayToolchainsConventionPlugin
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import dev.floofy.utils.java.SetOnce;
-import org.junit.Test;
-
-public class SetOnceTests {
-    @Test
-    public void test_valueByDefaultIsNull() {
-        var setter = new SetOnce<String>();
-
-        assertNull(setter.getValueOrNull());
-        assertThrows(IllegalStateException.class, setter::getValue);
-    }
-
-    @Test
-    public void test_setValue() {
-        var setter = new SetOnce<String>();
-        assertFalse(setter.wasSet());
-
-        setter.setValue("owo da uwu");
-        assertTrue(setter.wasSet());
-        assertEquals("owo da uwu", setter.getValue());
-        assertNotEquals("uwu da owo", setter.getValue());
-
-        setter.setValue("heck");
-        assertTrue(setter.wasSet());
-        assertEquals("owo da uwu", setter.getValue());
-        assertNotEquals("heck", setter.getValue());
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
     }
 }
+
+buildscript {
+    repositories {
+        gradlePluginPortal()
+    }
+
+    dependencies {
+        classpath("org.gradle.toolchains:foojay-resolver:0.4.0")
+    }
+}
+
+apply<FoojayToolchainsConventionPlugin>()

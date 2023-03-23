@@ -1,6 +1,6 @@
 /*
- * 🤹 common-utils: Common Kotlin utilities made for my personal usage.
- * Copyright (c) 2021-2023 Noel <cutie@floofy.dev>
+ * 🤹 common-utils: Common Java and Kotlin utilities for Noel's projects ^w^
+ * Copyright (c) 2021-2023 Noel Towa <cutie@floofy.dev>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,9 +21,10 @@
  * SOFTWARE.
  */
 
-rootProject.name = "commons"
+rootProject.name = "commons-utils"
 
 plugins {
+    id("org.gradle.toolchains.foojay-resolver-convention") version "0.4.0"
     id("com.gradle.enterprise") version "3.12.5"
 }
 
@@ -33,7 +34,7 @@ include(
     ":extensions-kotlin",
     ":gradle-utils",
     ":java-utils",
-    ":slf4j"
+    ":slf4j",
 )
 
 val buildScanServer = System.getProperty("dev.floofy.gradle.build-scan-server", "") ?: ""

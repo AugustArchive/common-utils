@@ -1,6 +1,6 @@
 /*
- * 🤹 common-utils: Common Kotlin utilities made for my personal usage.
- * Copyright (c) 2021-2023 Noel <cutie@floofy.dev>
+ * 🤹 common-utils: Common Java and Kotlin utilities for Noel's projects ^w^
+ * Copyright (c) 2021-2023 Noel Towa <cutie@floofy.dev>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -39,6 +39,22 @@ version = VERSION
 repositories {
     mavenCentral()
     mavenLocal()
+}
+
+spotless {
+    // For Kotlin (Gradle), we will need to move the license header
+    // as the last step due to https://github.com/diffplug/spotless/issues/1599
+    kotlinGradle {
+        endWithNewline()
+        encoding("UTF-8")
+        target("**/*.gradle.kts")
+        ktlint().apply {
+            setUseExperimental(true)
+            setEditorConfigPath(file("${rootProject.projectDir}/.editorconfig"))
+        }
+
+        licenseHeaderFile(file("${rootProject.projectDir}/assets/HEADING"), "(package |@file|import |pluginManagement|plugins|rootProject.name)")
+    }
 }
 
 tasks {
