@@ -45,6 +45,10 @@ spotless {
     // For Kotlin (Gradle), we will need to move the license header
     // as the last step due to https://github.com/diffplug/spotless/issues/1599
     kotlinGradle {
+        targetExclude(
+            "buildSrc/build/kotlin-dsl/plugins-blocks/extracted/commons-module.gradle.kts",
+        )
+
         endWithNewline()
         encoding("UTF-8")
         target("**/*.gradle.kts")
