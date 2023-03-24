@@ -25,7 +25,7 @@ rootProject.name = "commons-utils"
 
 plugins {
     id("org.gradle.toolchains.foojay-resolver-convention") version "0.4.0"
-    id("com.gradle.enterprise") version "3.12.5"
+    id("com.gradle.enterprise") version "3.12.6"
 }
 
 include(
