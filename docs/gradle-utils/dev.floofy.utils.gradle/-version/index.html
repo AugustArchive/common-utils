@@ -56,7 +56,7 @@
     <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":gradle-utils:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">Version</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>major<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>minor<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>patch<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>build<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">0</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>release<span class="token operator">: </span><a href="../-release-type/index.html">ReleaseType</a><span class="token operator"> = </span>ReleaseType.None<span class="token punctuation">, </span></span><span class="parameter ">showPatchNumber<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></span></span><span class="token punctuation">)</span></div><p class="paragraph">Represents a simple version class to use for versioning.</p><h4 class="">Parameters</h4><div class="table"><div class="table-row" data-filterable-current=":gradle-utils:dokkaHtmlPartial/main" data-filterable-set=":gradle-utils:dokkaHtmlPartial/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>major</span></span></u></div></span></div><div><div class="title"><p class="paragraph">The major version.</p></div></div></div></div><div class="table-row" data-filterable-current=":gradle-utils:dokkaHtmlPartial/main" data-filterable-set=":gradle-utils:dokkaHtmlPartial/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>minor</span></span></u></div></span></div><div><div class="title"><p class="paragraph">The minor version.</p></div></div></div></div><div class="table-row" data-filterable-current=":gradle-utils:dokkaHtmlPartial/main" data-filterable-set=":gradle-utils:dokkaHtmlPartial/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>patch</span></span></u></div></span></div><div><div class="title"><p class="paragraph">The patch version.</p></div></div></div></div><div class="table-row" data-filterable-current=":gradle-utils:dokkaHtmlPartial/main" data-filterable-set=":gradle-utils:dokkaHtmlPartial/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>build</span></span></u></div></span></div><div><div class="title"><p class="paragraph">The build version, this is only needed if the <a href="../-release-type/index.html">ReleaseType</a> is not <code class="lang-kotlin">None</code>.</p></div></div></div></div><div class="table-row" data-filterable-current=":gradle-utils:dokkaHtmlPartial/main" data-filterable-set=":gradle-utils:dokkaHtmlPartial/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>release</span></span></u></div></span></div><div><div class="title"><p class="paragraph">The release type to use for the finalized result. Defaults to <a href="../-release-type/-none/index.html">ReleaseType.None</a>.</p></div></div></div></div><div class="table-row" data-filterable-current=":gradle-utils:dokkaHtmlPartial/main" data-filterable-set=":gradle-utils:dokkaHtmlPartial/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>show</span><wbr><span>Patch</span><wbr><span><span>Number</span></span></u></div></span></div><div><div class="title"><p class="paragraph">If the patch number should be shown or not if <a href="patch.html">patch</a> is 0</p></div></div></div></div></div></div></div>
   </div>
   <div class="tabbedcontent">
-    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,FUNCTION,PROPERTY">Members</button></div>
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
     <div class="tabs-section-body">
       <div data-togglable="CONSTRUCTOR">
         <h2 class="">Constructors</h2>
@@ -71,100 +71,6 @@
               <div>
                 <div class="title">
                   <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":gradle-utils:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">major<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">minor<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">patch<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">build<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">0</span><span class="token punctuation">, </span></span><span class="parameter ">release<span class="token operator">: </span><a href="../-release-type/index.html">ReleaseType</a><span class="token operator"> = </span>ReleaseType.None</span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Represents a simple version class to use for versioning.</p></div><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">major<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">minor<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">patch<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">release<span class="token operator">: </span><a href="../-release-type/index.html">ReleaseType</a><span class="token operator"> = </span>ReleaseType.None<span class="token punctuation">, </span></span><span class="parameter ">showPatchNumber<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Represents a simple version class to use for versioning.</p></div><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">major<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">minor<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">patch<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">release<span class="token operator">: </span><a href="../-release-type/index.html">ReleaseType</a><span class="token operator"> = </span>ReleaseType.None</span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Represents a simple version class to use for versioning.</p></div><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">major<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">minor<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">patch<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">build<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">0</span><span class="token punctuation">, </span></span><span class="parameter ">release<span class="token operator">: </span><a href="../-release-type/index.html">ReleaseType</a><span class="token operator"> = </span>ReleaseType.None<span class="token punctuation">, </span></span><span class="parameter ">showPatchNumber<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></span></span><span class="token punctuation">)</span></div></div></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div data-togglable="FUNCTION">
-        <h2 class="">Functions</h2>
-        <div class="table"><a data-name="754953322%2FFunctions%2F1225119677" anchor-label="equals" id="754953322%2FFunctions%2F1225119677" data-filterable-set=":gradle-utils:dokkaHtmlPartial/main"></a>
-          <div class="table-row" data-filterable-current=":gradle-utils:dokkaHtmlPartial/main" data-filterable-set=":gradle-utils:dokkaHtmlPartial/main">
-            <div class="main-subrow keyValue ">
-              <div class=""><span class="inline-flex">
-                  <div><a href="equals.html"><span><span>equals</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="754953322%2FFunctions%2F1225119677"></span>
-                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                  </span></span></div>
-              <div>
-                <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":gradle-utils:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">operator override </span><span class="token keyword">fun </span><a href="equals.html"><span class="token function">equals</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">other<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token operator">?</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
-                </div>
-              </div>
-            </div>
-          </div>
-<a data-name="236957284%2FFunctions%2F1225119677" anchor-label="getGitCommit" id="236957284%2FFunctions%2F1225119677" data-filterable-set=":gradle-utils:dokkaHtmlPartial/main"></a>
-          <div class="table-row" data-filterable-current=":gradle-utils:dokkaHtmlPartial/main" data-filterable-set=":gradle-utils:dokkaHtmlPartial/main">
-            <div class="main-subrow keyValue ">
-              <div class=""><span class="inline-flex">
-                  <div><a href="get-git-commit.html"><span>get</span><wbr><span>Git</span><wbr><span><span>Commit</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="236957284%2FFunctions%2F1225119677"></span>
-                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                  </span></span></div>
-              <div>
-                <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":gradle-utils:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="get-git-commit.html"><span class="token function"><strike>getGitCommit</strike></span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Returns the commit sha if the project is in a Git repository. Returns <code class="lang-kotlin">null</code> if a <a href="https://docs.oracle.com/javase/8/docs/api/java/io/IOException.html">IOException</a> had occurred.</p></div></div></div>
-                </div>
-              </div>
-            </div>
-          </div>
-<a data-name="485424444%2FFunctions%2F1225119677" anchor-label="hashCode" id="485424444%2FFunctions%2F1225119677" data-filterable-set=":gradle-utils:dokkaHtmlPartial/main"></a>
-          <div class="table-row" data-filterable-current=":gradle-utils:dokkaHtmlPartial/main" data-filterable-set=":gradle-utils:dokkaHtmlPartial/main">
-            <div class="main-subrow keyValue ">
-              <div class=""><span class="inline-flex">
-                  <div><a href="hash-code.html"><span>hash</span><wbr><span><span>Code</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="485424444%2FFunctions%2F1225119677"></span>
-                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                  </span></span></div>
-              <div>
-                <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":gradle-utils:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="hash-code.html"><span class="token function">hashCode</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a></div></div></div>
-                </div>
-              </div>
-            </div>
-          </div>
-<a data-name="309499075%2FFunctions%2F1225119677" anchor-label="satisfiedBy" id="309499075%2FFunctions%2F1225119677" data-filterable-set=":gradle-utils:dokkaHtmlPartial/main"></a>
-          <div class="table-row" data-filterable-current=":gradle-utils:dokkaHtmlPartial/main" data-filterable-set=":gradle-utils:dokkaHtmlPartial/main">
-            <div class="main-subrow keyValue ">
-              <div class=""><span class="inline-flex">
-                  <div><a href="satisfied-by.html"><span>satisfied</span><wbr><span><span>By</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="309499075%2FFunctions%2F1225119677"></span>
-                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                  </span></span></div>
-              <div>
-                <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":gradle-utils:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">infix </span><span class="token keyword">fun </span><a href="satisfied-by.html"><span class="token function">satisfiedBy</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">constraint<span class="token operator">: </span><span data-unresolved-link="io.github.z4kn4fein.semver.constraints/Constraint///PointingToDeclaration/">Constraint</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Checks if the <a href="satisfied-by.html">constraint</a> is satisfied by this current version object.</p></div></div></div>
-                </div>
-              </div>
-            </div>
-          </div>
-<a data-name="1445882617%2FFunctions%2F1225119677" anchor-label="toSemVer" id="1445882617%2FFunctions%2F1225119677" data-filterable-set=":gradle-utils:dokkaHtmlPartial/main"></a>
-          <div class="table-row" data-filterable-current=":gradle-utils:dokkaHtmlPartial/main" data-filterable-set=":gradle-utils:dokkaHtmlPartial/main">
-            <div class="main-subrow keyValue ">
-              <div class=""><span class="inline-flex">
-                  <div><a href="to-sem-ver.html"><span>to</span><wbr><span>Sem</span><wbr><span><span>Ver</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1445882617%2FFunctions%2F1225119677"></span>
-                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                  </span></span></div>
-              <div>
-                <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":gradle-utils:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="to-sem-ver.html"><span class="token function">toSemVer</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">strict<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.github.z4kn4fein.semver/Version///PointingToDeclaration/">Version</span></div><div class="brief "><p class="paragraph">Converts this <a href="index.html">Version</a> object into a <span data-unresolved-link="io.github.z4kn4fein.semver/Version///PointingToDeclaration/">SemVersion</span> object.</p></div></div></div>
-                </div>
-              </div>
-            </div>
-          </div>
-<a data-name="307258379%2FFunctions%2F1225119677" anchor-label="toString" id="307258379%2FFunctions%2F1225119677" data-filterable-set=":gradle-utils:dokkaHtmlPartial/main"></a>
-          <div class="table-row" data-filterable-current=":gradle-utils:dokkaHtmlPartial/main" data-filterable-set=":gradle-utils:dokkaHtmlPartial/main">
-            <div class="main-subrow keyValue ">
-              <div class=""><span class="inline-flex">
-                  <div><a href="to-string.html"><span>to</span><wbr><span><span>String</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="307258379%2FFunctions%2F1225119677"></span>
-                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                  </span></span></div>
-              <div>
-                <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":gradle-utils:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="to-string.html"><span class="token function">toString</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div></div></div>
                 </div>
               </div>
             </div>
@@ -259,6 +165,100 @@
               <div>
                 <div class="title">
                   <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":gradle-utils:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="release.html">release</a><span class="token operator">: </span><a href="../-release-type/index.html">ReleaseType</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="754953322%2FFunctions%2F1225119677" anchor-label="equals" id="754953322%2FFunctions%2F1225119677" data-filterable-set=":gradle-utils:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":gradle-utils:dokkaHtmlPartial/main" data-filterable-set=":gradle-utils:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="equals.html"><span><span>equals</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="754953322%2FFunctions%2F1225119677"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":gradle-utils:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">operator override </span><span class="token keyword">fun </span><a href="equals.html"><span class="token function">equals</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">other<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token operator">?</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="236957284%2FFunctions%2F1225119677" anchor-label="getGitCommit" id="236957284%2FFunctions%2F1225119677" data-filterable-set=":gradle-utils:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":gradle-utils:dokkaHtmlPartial/main" data-filterable-set=":gradle-utils:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-git-commit.html"><span>get</span><wbr><span>Git</span><wbr><span><span>Commit</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="236957284%2FFunctions%2F1225119677"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":gradle-utils:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="get-git-commit.html"><span class="token function"><strike>getGitCommit</strike></span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Returns the commit sha if the project is in a Git repository. Returns <code class="lang-kotlin">null</code> if a <a href="https://docs.oracle.com/javase/8/docs/api/java/io/IOException.html">IOException</a> had occurred.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="485424444%2FFunctions%2F1225119677" anchor-label="hashCode" id="485424444%2FFunctions%2F1225119677" data-filterable-set=":gradle-utils:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":gradle-utils:dokkaHtmlPartial/main" data-filterable-set=":gradle-utils:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="hash-code.html"><span>hash</span><wbr><span><span>Code</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="485424444%2FFunctions%2F1225119677"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":gradle-utils:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="hash-code.html"><span class="token function">hashCode</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="309499075%2FFunctions%2F1225119677" anchor-label="satisfiedBy" id="309499075%2FFunctions%2F1225119677" data-filterable-set=":gradle-utils:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":gradle-utils:dokkaHtmlPartial/main" data-filterable-set=":gradle-utils:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="satisfied-by.html"><span>satisfied</span><wbr><span><span>By</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="309499075%2FFunctions%2F1225119677"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":gradle-utils:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">infix </span><span class="token keyword">fun </span><a href="satisfied-by.html"><span class="token function">satisfiedBy</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">constraint<span class="token operator">: </span><span data-unresolved-link="io.github.z4kn4fein.semver.constraints/Constraint///PointingToDeclaration/">Constraint</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Checks if the <a href="satisfied-by.html">constraint</a> is satisfied by this current version object.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1445882617%2FFunctions%2F1225119677" anchor-label="toSemVer" id="1445882617%2FFunctions%2F1225119677" data-filterable-set=":gradle-utils:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":gradle-utils:dokkaHtmlPartial/main" data-filterable-set=":gradle-utils:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="to-sem-ver.html"><span>to</span><wbr><span>Sem</span><wbr><span><span>Ver</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1445882617%2FFunctions%2F1225119677"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":gradle-utils:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="to-sem-ver.html"><span class="token function">toSemVer</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">strict<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.github.z4kn4fein.semver/Version///PointingToDeclaration/">Version</span></div><div class="brief "><p class="paragraph">Converts this <a href="index.html">Version</a> object into a <span data-unresolved-link="io.github.z4kn4fein.semver/Version///PointingToDeclaration/">SemVersion</span> object.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="307258379%2FFunctions%2F1225119677" anchor-label="toString" id="307258379%2FFunctions%2F1225119677" data-filterable-set=":gradle-utils:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":gradle-utils:dokkaHtmlPartial/main" data-filterable-set=":gradle-utils:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="to-string.html"><span>to</span><wbr><span><span>String</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="307258379%2FFunctions%2F1225119677"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":gradle-utils:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="to-string.html"><span class="token function">toString</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div></div></div>
                 </div>
               </div>
             </div>
