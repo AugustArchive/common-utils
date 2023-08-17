@@ -35,7 +35,7 @@ buildscript {
     }
 
     dependencies {
-        classpath("org.gradle.toolchains:foojay-resolver:0.6.0")
+        classpath("org.gradle.toolchains:foojay-resolver:0.7.0")
     }
 }
 
