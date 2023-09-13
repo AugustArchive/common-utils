@@ -26,5 +26,5 @@ plugins {
 }
 
 dependencies {
-    api("io.insert-koin:koin-core:3.4.3")
+    api("io.insert-koin:koin-core:3.5.0")
 }
